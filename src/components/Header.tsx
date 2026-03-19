@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Fence } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/config/site";
+import { img } from "@/lib/utils";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,8 +28,15 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:h-[72px]">
-        <a href="#" className="flex items-center gap-2">
-          <Fence className={`h-5 w-5 ${scrolled ? "text-accent" : "text-white"}`} />
+        <a href="#" className="flex items-center gap-2.5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={img("/images/logo-aufm-schaeferhof.jpeg")}
+            alt="Aufm Schäferhof Logo"
+            className={`h-9 w-9 rounded-full object-cover transition-all ${
+              scrolled ? "" : "brightness-0 invert"
+            }`}
+          />
           <span
             className={`font-heading text-lg font-bold ${
               scrolled ? "text-primary" : "text-white"

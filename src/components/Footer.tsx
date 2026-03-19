@@ -1,5 +1,6 @@
-import { Fence, Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { img } from "@/lib/utils";
 
 export default function Footer() {
   return (
@@ -7,8 +8,13 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-5 py-12 sm:px-6">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <div>
-            <div className="mb-4 flex items-center gap-2">
-              <Fence className="h-5 w-5 text-accent" />
+            <div className="mb-4 flex items-center gap-2.5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={img("/images/logo-aufm-schaeferhof.jpeg")}
+                alt="Aufm Schäferhof Logo"
+                className="h-9 w-9 rounded-full object-cover"
+              />
               <span className="font-heading text-lg font-bold text-primary">{siteConfig.name}</span>
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground">
