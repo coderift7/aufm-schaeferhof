@@ -2,6 +2,7 @@
 
 import { Heart, CloudSun, Scissors, Baby } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { img } from "@/lib/utils";
 import { Reveal, StaggerContainer, StaggerItem, slideFromLeft, slideFromRight } from "./Motion";
 
 const icons = [CloudSun, Baby, Scissors, Heart];
@@ -28,15 +29,15 @@ export default function AboutBreed() {
             </div>
           </Reveal>
 
-          {/* Placeholder image area */}
+          {/* Herde auf der Weide */}
           <Reveal variants={slideFromRight} delay={0.1}>
-            <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-gradient-to-br from-accent/10 to-warm/10 flex items-center justify-center">
-              <div className="text-center px-8">
-                <span className="font-heading text-6xl text-accent/20">🐑</span>
-                <p className="mt-3 text-sm text-muted-foreground">
-                  Hier kommt ein Foto Ihrer Guteschafe hin
-                </p>
-              </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={img("/images/herde-weide.jpg")}
+                alt="Guteschafe auf der Weide in Friesoythe-Markhausen"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
             </div>
           </Reveal>
         </div>

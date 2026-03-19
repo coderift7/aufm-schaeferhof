@@ -3,6 +3,7 @@
 import { Check, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
+import { img } from "@/lib/utils";
 import { Reveal, slideFromLeft, slideFromRight } from "./Motion";
 
 export default function Zucht() {
@@ -62,15 +63,15 @@ export default function Zucht() {
             </div>
           </Reveal>
 
-          {/* Photo placeholder */}
+          {/* Zuchtbock auf der Weide */}
           <Reveal variants={slideFromRight} delay={0.15}>
-            <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-gradient-to-br from-accent/10 to-warm/10 flex items-center justify-center">
-              <div className="text-center px-8">
-                <span className="font-heading text-5xl text-warm/20">🐏</span>
-                <p className="mt-3 text-sm text-muted-foreground">
-                  Hier kommt ein Foto Ihrer Zuchtböcke hin
-                </p>
-              </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={img("/images/bock-weide.jpg")}
+                alt="Guteschaf-Zuchtbock auf der Weide"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
             </div>
           </Reveal>
         </div>

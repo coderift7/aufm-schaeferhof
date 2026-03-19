@@ -49,7 +49,7 @@ export const siteConfig = {
 
   zucht: {
     headline: "Unsere Zucht",
-    text: "Auf'm Schäferhof züchten wir Guteschafe in Reinzucht. Unsere Tiere leben ganzjährig in Freilandhaltung auf den Weiden rund um Markhausen. Wir legen Wert auf gesunde, kräftige Tiere mit rassetypischem Erscheinungsbild und freundlichem Wesen.",
+    text: "Michael züchtet seit 2017 reinrassig Guteschafe und ist mittlerweile als Herdbuchzüchter anerkannt. Unsere Tiere leben ganzjährig in Freilandhaltung auf den Weiden rund um Markhausen. Sie sind nicht nur bildhübsch, sondern auch gesund und robust — mit schwedischen Wurzeln und norddeutschem Zuhause.",
     selling: {
       headline: "Zuchttiere zu verkaufen",
       text: "Regelmäßig geben wir Zuchtböcke und Mutterschafe an verantwortungsvolle Halter ab. Unsere Tiere sind entwurmt, geimpft und an Freilandhaltung gewöhnt. Wir beraten Sie gerne bei der Anschaffung — auch wenn Sie Anfänger in der Schafhaltung sind.",
@@ -107,6 +107,7 @@ export const siteConfig = {
   nav: [
     { label: "Guteschafe", href: "#guteschafe" },
     { label: "Zucht & Verkauf", href: "#zucht" },
+    { label: "Der Hof", href: "#hof" },
     { label: "Fragen", href: "#faq" },
     { label: "Kontakt", href: "#kontakt" },
   ],

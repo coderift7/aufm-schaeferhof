@@ -3,6 +3,7 @@
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
+import { img } from "@/lib/utils";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -11,19 +12,16 @@ export default function Hero() {
 
   return (
     <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-primary">
-      {/* Warm green gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-accent/40" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_70%_60%,rgba(161,98,7,0.12),transparent)]" />
-
-      {/* Subtle organic texture */}
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 2px 2px, white 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
+      {/* Background image */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={img("/images/hero-lamm.jpg")}
+        alt="Guteschaf-Lamm auf dem Schäferhof"
+        className="absolute inset-0 h-full w-full object-cover"
       />
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/70 to-primary/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-primary/30" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-5 py-32 sm:px-6">
         <div className="max-w-3xl">
