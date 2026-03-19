@@ -13,7 +13,7 @@ export default function Footer() {
               <img
                 src={img("/images/logo-aufm-schaeferhof.jpeg")}
                 alt="Aufm Schäferhof Logo"
-                className="h-9 w-9 rounded-full object-cover"
+                className="h-12 w-12 rounded-full object-cover"
               />
               <span className="font-heading text-lg font-bold text-primary">{siteConfig.name}</span>
             </div>

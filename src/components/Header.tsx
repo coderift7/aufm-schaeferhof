@@ -33,7 +33,7 @@ export default function Header() {
           <img
             src={img("/images/logo-aufm-schaeferhof.jpeg")}
             alt="Aufm Schäferhof Logo"
-            className={`h-9 w-9 rounded-full object-cover transition-all ${
+            className={`h-12 w-12 rounded-full object-cover transition-all ${
               scrolled ? "" : "brightness-0 invert"
             }`}
           />
