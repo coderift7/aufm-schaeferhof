@@ -36,8 +36,7 @@ export default function Datenschutz() {
               <br />
               Tel: {siteConfig.phone}
               <br />
-              {/* TODO: E-Mail-Adresse für Datenschutz */}
-              E-Mail: [E-Mail-Adresse einfügen]
+              E-Mail: info@aufmschaeferhof.de
             </p>
           </section>
 
