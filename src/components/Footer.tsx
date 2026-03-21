@@ -1,6 +1,6 @@
 import { Phone, MapPin } from "lucide-react";
 import { siteConfig } from "@/config/site";
-import { img } from "@/lib/utils";
+import { img, href } from "@/lib/utils";
 
 export default function Footer() {
   return (
@@ -88,12 +88,12 @@ export default function Footer() {
                 </li>
               ))}
               <li>
-                <a href="/impressum" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                <a href={href("/impressum")} className="text-sm text-muted-foreground transition-colors hover:text-primary">
                   Impressum
                 </a>
               </li>
               <li>
-                <a href="/datenschutz" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                <a href={href("/datenschutz")} className="text-sm text-muted-foreground transition-colors hover:text-primary">
                   Datenschutz
                 </a>
               </li>

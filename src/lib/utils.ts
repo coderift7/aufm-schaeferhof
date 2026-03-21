@@ -10,3 +10,7 @@ const basePath = "/aufm-schaeferhof";
 export function img(path: string) {
   return `${basePath}${path}`;
 }
+
+export function href(path: string) {
+  return `${basePath}${path}`;
+}

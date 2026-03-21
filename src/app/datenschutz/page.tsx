@@ -9,7 +9,7 @@ export default function Datenschutz() {
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-3xl px-6 py-24 sm:px-8">
         <a
-          href="/"
+          href="/aufm-schaeferhof/"
           className="mb-8 inline-flex items-center gap-2 text-sm text-warm transition-colors hover:text-primary"
         >
           <ArrowLeft className="h-4 w-4" /> Zurück zur Startseite
