@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lora, Raleway } from "next/font/google";
+import { Lora, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 
@@ -10,10 +10,10 @@ const lora = Lora({
   display: "swap",
 });
 
-const raleway = Raleway({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-raleway",
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -41,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={`${lora.variable} ${raleway.variable}`}>
+    <html lang="de" className={`${lora.variable} ${dmSans.variable}`}>
       <head>
         {/* FAQ Schema */}
         <script
@@ -69,15 +69,19 @@ export default function RootLayout({
               description: siteConfig.meta.description,
               url: siteUrl,
               telephone: siteConfig.phone,
-              email: siteConfig.email,
               address: {
                 "@type": "PostalAddress",
+                streetAddress: "Vorderthüler Straße 5a",
                 addressLocality: "Friesoythe-Markhausen",
                 postalCode: "26169",
                 addressRegion: "Niedersachsen",
                 addressCountry: "DE",
               },
               areaServed: "Niedersachsen, Deutschland",
+              sameAs: [
+                siteConfig.social.facebook,
+                siteConfig.social.instagram,
+              ],
             }),
           }}
         />

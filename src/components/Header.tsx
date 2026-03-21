@@ -18,27 +18,30 @@ export default function Header() {
 
   return (
     <motion.header
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-xl shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
+          ? "bg-background/80 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.04)]"
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:h-[72px]">
-        <a href="#" className="flex items-center gap-2.5">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 sm:px-8 lg:h-[72px]">
+        {/* Logo */}
+        <a href="#" className="flex items-center gap-3 group">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={img("/images/logo-aufm-schaeferhof.jpeg")}
-            alt="Aufm Schäferhof Logo"
-            className={`h-12 w-12 rounded-full object-cover transition-all ${
-              scrolled ? "" : "brightness-0 invert"
+            alt="Auf'm Schäferhof Logo"
+            className={`h-10 w-10 rounded-full object-cover ring-2 transition-all duration-300 ${
+              scrolled
+                ? "ring-border"
+                : "ring-white/20"
             }`}
           />
           <span
-            className={`font-heading text-lg font-bold ${
+            className={`font-heading text-base font-semibold tracking-tight transition-colors duration-300 ${
               scrolled ? "text-primary" : "text-white"
             }`}
           >
@@ -46,31 +49,41 @@ export default function Header() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-1 lg:flex">
-          {siteConfig.nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`rounded-lg px-3.5 py-2 text-sm font-medium transition-colors ${
-                scrolled
-                  ? "text-muted-foreground hover:text-primary"
-                  : "text-white/80 hover:text-white"
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
-          <a
-            href="#kontakt"
-            className="ml-3 cursor-pointer rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent/90"
-          >
-            Kontakt
-          </a>
+        {/* Desktop Nav */}
+        <nav className="hidden items-center gap-2 sm:flex">
+          {siteConfig.nav.map((item) =>
+            item.href === "#kontakt" ? (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`ml-2 rounded-full px-5 py-2 text-sm font-medium transition-all duration-300 ${
+                  scrolled
+                    ? "bg-primary text-white hover:bg-primary/90"
+                    : "bg-white/10 text-white backdrop-blur-sm hover:bg-white/20"
+                }`}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+                  scrolled
+                    ? "text-muted-foreground hover:text-primary"
+                    : "text-white/70 hover:text-white"
+                }`}
+              >
+                {item.label}
+              </a>
+            )
+          )}
         </nav>
 
+        {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className={`cursor-pointer rounded-lg p-2 lg:hidden ${
+          className={`cursor-pointer rounded-full p-2 transition-colors sm:hidden ${
             scrolled ? "text-primary" : "text-white"
           }`}
           aria-label="Menü"
@@ -79,32 +92,27 @@ export default function Header() {
         </button>
       </div>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-t border-border bg-white lg:hidden"
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden border-t border-border/50 bg-background/95 backdrop-blur-xl sm:hidden"
           >
-            <nav className="flex flex-col gap-1 px-5 py-4">
+            <nav className="flex flex-col gap-1 px-6 py-4">
               {siteConfig.nav.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-lg px-3 py-2.5 text-foreground"
+                  className="rounded-xl px-4 py-3 text-foreground transition-colors hover:bg-muted"
                 >
                   {item.label}
                 </a>
               ))}
-              <a
-                href="#kontakt"
-                onClick={() => setOpen(false)}
-                className="mt-2 rounded-lg bg-accent px-5 py-3 text-center text-sm font-semibold text-white"
-              >
-                Kontakt
-              </a>
             </nav>
           </motion.div>
         )}

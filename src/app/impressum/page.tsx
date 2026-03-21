@@ -15,7 +15,7 @@ export default function Impressum() {
         <div className="mt-8 space-y-6 text-muted-foreground">
           <div>
             <h2 className="font-heading text-lg font-semibold text-primary">Angaben gemäß § 5 TMG</h2>
-            <p className="mt-2">{siteConfig.name}<br />{siteConfig.address}<br />{siteConfig.email}</p>
+            <p className="mt-2">{siteConfig.name}<br />{siteConfig.address}<br />Tel: {siteConfig.phone}</p>
           </div>
           <p className="text-sm text-muted-foreground/60">Platzhalter — wird vom Betreiber ergänzt.</p>
         </div>
