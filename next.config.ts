@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: "/aufm-schaeferhof",
+  basePath: process.env.GITHUB_PAGES === "true" ? "/aufm-schaeferhof" : "",
   images: {
     unoptimized: true,
   },
