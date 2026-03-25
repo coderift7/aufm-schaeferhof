@@ -12,9 +12,9 @@ export default function Footer() {
             <div className="mb-4 flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={img("/images/logo-aufm-schaeferhof.jpeg")}
+                src={img("/images/logo-aufm-schaeferhof.png")}
                 alt="Auf'm Schäferhof Logo"
-                className="h-10 w-10 rounded-full object-cover ring-2 ring-border"
+                className="h-10 w-10 object-contain"
               />
               <span className="font-heading text-base font-semibold text-primary">
                 {siteConfig.name}

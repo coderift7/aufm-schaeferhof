@@ -32,12 +32,12 @@ export default function Header() {
         <a href="#" className="flex items-center gap-3 group">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={img("/images/logo-aufm-schaeferhof.jpeg")}
+            src={img("/images/logo-aufm-schaeferhof.png")}
             alt="Auf'm Schäferhof Logo"
-            className={`h-10 w-10 rounded-full object-cover ring-2 transition-all duration-300 ${
+            className={`h-10 w-10 object-contain transition-all duration-300 ${
               scrolled
-                ? "ring-border"
-                : "ring-white/20"
+                ? ""
+                : "invert"
             }`}
           />
           <span
