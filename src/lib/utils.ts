@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-const basePath = "/aufm-schaeferhof";
+const basePath = process.env.NEXT_PUBLIC_GITHUB_PAGES === "true" ? "/aufm-schaeferhof" : "";
 
 export function img(path: string) {
   return `${basePath}${path}`;

@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAGES: "true"
+      NEXT_PUBLIC_GITHUB_PAGES: "true"
       SITE_URL: "https://coderift7.github.io/aufm-schaeferhof"
     steps:
       - uses: actions/checkout@v4
