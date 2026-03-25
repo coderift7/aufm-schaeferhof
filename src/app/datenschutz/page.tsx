@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { href } from "@/lib/utils";
 
 export const metadata: Metadata = { title: `Datenschutz – ${siteConfig.name}` };
 
@@ -9,7 +10,7 @@ export default function Datenschutz() {
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-3xl px-6 py-24 sm:px-8">
         <a
-          href="/aufm-schaeferhof/"
+          href={href("/")}
           className="mb-8 inline-flex items-center gap-2 text-sm text-warm transition-colors hover:text-primary"
         >
           <ArrowLeft className="h-4 w-4" /> Zurück zur Startseite

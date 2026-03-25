@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { href } from "@/lib/utils";
 
 export const metadata: Metadata = { title: `Impressum – ${siteConfig.name}` };
 
@@ -8,7 +9,7 @@ export default function Impressum() {
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-3xl px-6 py-24 sm:px-8">
-        <a href="/aufm-schaeferhof/" className="mb-8 inline-flex items-center gap-2 text-sm text-accent hover:underline">
+        <a href={href("/")} className="mb-8 inline-flex items-center gap-2 text-sm text-accent hover:underline">
           <ArrowLeft className="h-4 w-4" /> Zurück zur Startseite
         </a>
         <h1 className="font-heading text-3xl font-bold text-primary">Impressum</h1>
