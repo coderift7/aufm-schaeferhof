@@ -24,13 +24,13 @@ export const siteConfig = {
   },
 
   about: {
-    headline: "Wir über uns",
+    headline: "Über uns",
     paragraphs: [
-      "2016 haben wir den Trubel der hessischen Großstadt gegen das ruhige, grüne Oldenburger Münsterland getauscht – und dabei etwas völlig Unerwartetes entdeckt: die Liebe zu Schafen! Bis dahin hatten wir noch nie mit diesen wolligen Gesellen zu tun, doch dann trafen wir auf die Gehörnte Gotlandschafe, eine seltene und besonders bunte und robuste schwedische Landschafrasse, die sich sofort in unsere Herzen gemääääht hat.",
-      "Seitdem ist viel passiert: Aus Neugier wurde Begeisterung, aus Begeisterung ein kleines, aber feines Hobby.",
-      "Heute kümmern wir uns mit viel Freude um unsere kleine Herde und tragen so im Rahmen unserer Möglichkeiten zum Erhalt dieser besonderen Rasse bei. Es ist ein Herzensprojekt – mit viel Leidenschaft und dem einen oder anderen Schaf, das uns täglich aufs Neue zum Lachen bringt.",
-      "Auf dieser Website erfahrt ihr mehr über unsere Schafe, ihren Alltag und warum uns Nachhaltigkeit und artgerechte Haltung so wichtig sind. Später kommen noch weitere Projekte hinzu \u2013 etwa Infos zu unserer \u201ENatur im Garten\u201C-Plakette oder anderen Ideen, die uns am Herzen liegen.",
-      "Schaut euch um, stellt Fragen und begleitet uns ein Stück. Wir freuen uns, dass ihr da seid!",
+      "2016 haben wir den Trubel der hessischen Großstadt gegen das ruhige, grüne Oldenburger Münsterland getauscht – und dabei etwas völlig Unerwartetes entdeckt: die Liebe zu Schafen!",
+      "Bis dahin hatten wir noch nie mit diesen wolligen Gesellen zu tun. Doch dann trafen wir auf die Gehörnten Gotlandschafe, eine seltene und besonders bunte und robuste schwedische Landschafrasse. Sie haben sich sofort in unsere Herzen gemääääht.",
+      "Heute kümmern wir uns mit viel Freude um unsere kleine Herde und tragen so zum Erhalt dieser besonderen Rasse bei. Es ist ein Herzensprojekt – mit viel Leidenschaft und dem einen oder anderen Schaf, das uns täglich aufs Neue zum Lachen bringt.",
+      "Später kommen noch weitere Themen hinzu \u2013 etwa Infos zu unserer \u201ENatur im Garten\u201C-Plakette oder anderen Ideen, die uns am Herzen liegen.",
+      "Schaut euch gerne um, stellt Fragen und begleitet uns ein Stück. Wir freuen uns, dass ihr da seid!",
     ],
     socialCta: "Folgt uns gerne auf Instagram / Facebook für mehr Einblicke!",
   },
@@ -39,12 +39,12 @@ export const siteConfig = {
     {
       question: "Was sind Gehörnte Gotlandschafe?",
       answer:
-        "\u201EGeh\u00F6rnte Gotlandschafe\u201C oder \u201EGuteschafe\u201C sind eine ganz besondere, alte Landschafrasse \u2013 und unsere absoluten Herzensschafe! Sie sind robust, freundlich, sehr sozial und perfekt an das Leben auf der Weide angepasst. Urspr\u00FCnglich stammen sie aus Schweden und waren beinah ausgestorben. Heute geh\u00F6ren sie weiterhin zu den seltenen Rassen, die es zu erhalten gilt. Wir haben uns in ihre ruhige und freundliche Art und ihre vielen Farben verliebt \u2013 und seitdem sind sie einfach Teil unserer Familie.",
+        "\u201EGeh\u00F6rnte Gotlandschafe\u201C oder \u201EGuteschafe\u201C sind eine ganz besondere, alte Landschafrasse \u2013 und unsere absoluten Herzensschafe! Sie sind robust, freundlich, sehr sozial und perfekt an das Leben auf der Weide angepasst. Urspr\u00FCnglich stammen sie aus Schweden und waren nahezu ausgestorben. Auch heute ist das Geh\u00F6rnte Gotlandschaf eine seltene Rasse, die es zu erhalten gilt. Wir haben uns in ihre ruhige und freundliche Art und ihre vielen Farben verliebt \u2013 und seitdem sind die Geh\u00F6rnten Gotlandschafe einfach Teil unserer Familie.",
     },
     {
       question: "Warum betreibt Ihr eine Erhaltungszucht?",
       answer:
-        "Weil wir diese wunderbaren Tiere nicht in Vergessenheit geraten lassen wollen! Gehörnte Gotlandschafe sind nicht nur hübsch anzusehen, sondern auch ein Stück Kultur- und Naturgeschichte. Mit unserer kleinen Zucht möchten wir dazu beitragen, dass die Rasse erhalten bleibt – und dass andere Menschen sie genauso lieben lernen wie wir. Es ist kein großer Betrieb, sondern ein Herzensprojekt mit viel Leidenschaft und dem Wunsch, etwas Gutes zu tun.",
+        "Weil wir diese wunderbaren Tiere nicht in Vergessenheit geraten lassen wollen! Gehörnte Gotlandschafe sind nicht nur hübsch anzusehen, sondern auch ein Stück Kultur- und Naturgeschichte. Mit unserer kleinen Zucht möchten wir dazu beitragen, dass die Rasse erhalten bleibt und andere Menschen sie genauso lieben lernen wie wir. Es ist kein großer Betrieb, sondern ein Herzensprojekt mit viel Leidenschaft und dem Wunsch, etwas Gutes zu tun.",
     },
     {
       question: "Können wir euch auf Social Media folgen?",
@@ -62,12 +62,12 @@ export const siteConfig = {
         "Derzeit leben etwa 30 Schafe bei uns. Dazu kommen je nach Saison auch immer noch ein paar Lämmer. Unsere Hobbyzucht umfasst in der Regel 20–30 Tiere. Es ist uns wichtig, dass jedes Schaf genug Platz und Aufmerksamkeit bekommt.",
     },
     {
-      question: "Wieviel Tiere sollte ich mindestens haben?",
+      question: "Wenn ich Guteschafe halten möchte, wie viele Schafe sollte ich mindestens halten?",
       answer:
         "Schafe sind Herdentiere und fühlen sich erst ab mindestens 3–5 Tieren wirklich wohl. Allein oder zu zweit würden sie sich einsam fühlen – und das wollen wir ja nicht!",
     },
     {
-      question: "Wieviel Platz brauchen die Tiere?",
+      question: "Wie viel Platz brauchen die Tiere?",
       answer:
         "Als Faustformel würden wir für 8–10 Gehörnte Gotlandschafe einen Hektar Weideland empfehlen.",
     },
@@ -88,7 +88,7 @@ export const siteConfig = {
   },
 
   nav: [
-    { label: "Wir über uns", href: "#ueber-uns" },
+    { label: "Über uns", href: "#ueber-uns" },
     { label: "Häufige Fragen", href: "#faq" },
     { label: "Kontakt", href: "#kontakt" },
   ],
