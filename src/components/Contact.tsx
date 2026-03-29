@@ -46,14 +46,19 @@ export default function Contact() {
                     {siteConfig.phone}
                   </span>
                 </a>
-                <div className="flex items-center gap-4">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-background shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.address)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-background shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-shadow group-hover:shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
                     <MapPin className="h-4 w-4 text-warm" />
                   </div>
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-sm text-muted-foreground transition-colors group-hover:text-primary">
                     {siteConfig.address}
                   </span>
-                </div>
+                </a>
               </div>
 
               {/* Social Links */}
