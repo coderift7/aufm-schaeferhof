@@ -12,6 +12,8 @@ const inputClasses =
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
   return (
     <section id="kontakt" className="relative bg-muted py-28 lg:py-36">
@@ -118,9 +120,24 @@ export default function Contact() {
                 ) : (
                   <motion.form
                     key="form"
-                    onSubmit={(e) => {
+                    onSubmit={async (e) => {
                       e.preventDefault();
-                      setSubmitted(true);
+                      setSending(true);
+                      setError("");
+                      const form = e.currentTarget;
+                      const data = new FormData(form);
+                      try {
+                        const res = await fetch("/contact.php", { method: "POST", body: data });
+                        if (res.ok) {
+                          setSubmitted(true);
+                        } else {
+                          setError("Nachricht konnte nicht gesendet werden. Bitte versucht es später erneut.");
+                        }
+                      } catch {
+                        setError("Verbindungsfehler. Bitte versucht es später erneut.");
+                      } finally {
+                        setSending(false);
+                      }
                     }}
                     className="space-y-5"
                   >
@@ -129,27 +146,32 @@ export default function Contact() {
                         <label htmlFor="name" className="mb-2 block text-sm font-medium text-foreground">
                           Name *
                         </label>
-                        <input type="text" id="name" required placeholder="Euer Name" className={inputClasses} />
+                        <input type="text" id="name" name="name" required placeholder="Euer Name" className={inputClasses} />
                       </div>
                       <div>
                         <label htmlFor="email" className="mb-2 block text-sm font-medium text-foreground">
                           E-Mail *
                         </label>
-                        <input type="email" id="email" required placeholder="eure@email.de" className={inputClasses} />
+                        <input type="email" id="email" name="email" required placeholder="eure@email.de" className={inputClasses} />
                       </div>
                     </div>
                     <div>
                       <label htmlFor="phone" className="mb-2 block text-sm font-medium text-foreground">
                         Telefon
                       </label>
-                      <input type="tel" id="phone" placeholder="Für Rückfragen" className={inputClasses} />
+                      <input type="tel" id="phone" name="phone" placeholder="Für Rückfragen" className={inputClasses} />
                     </div>
                     <div>
                       <label htmlFor="message" className="mb-2 block text-sm font-medium text-foreground">
                         Nachricht *
                       </label>
-                      <textarea id="message" required rows={4} placeholder="Was können wir für euch tun?" className={inputClasses} />
+                      <textarea id="message" name="message" required rows={4} placeholder="Was können wir für euch tun?" className={inputClasses} />
                     </div>
+                    {/* Honeypot — hidden from users, catches bots */}
+                    <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
+                    {error && (
+                      <p className="text-sm text-red-500">{error}</p>
+                    )}
                     <label className="flex cursor-pointer items-start gap-2.5">
                       <input type="checkbox" required className="mt-0.5 rounded border-border" />
                       <span className="text-xs leading-relaxed text-muted-foreground">
@@ -162,10 +184,11 @@ export default function Contact() {
                     </label>
                     <button
                       type="submit"
-                      className="group flex w-full cursor-pointer items-center justify-center gap-2.5 rounded-xl bg-primary px-6 py-4 text-sm font-semibold text-white shadow-[0_2px_8px_rgba(0,0,0,0.12)] transition-all duration-300 hover:bg-primary/90 hover:shadow-[0_4px_16px_rgba(0,0,0,0.16)]"
+                      disabled={sending}
+                      className="group flex w-full cursor-pointer items-center justify-center gap-2.5 rounded-xl bg-primary px-6 py-4 text-sm font-semibold text-white shadow-[0_2px_8px_rgba(0,0,0,0.12)] transition-all duration-300 hover:bg-primary/90 hover:shadow-[0_4px_16px_rgba(0,0,0,0.16)] disabled:opacity-60 disabled:cursor-not-allowed"
                     >
                       <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-                      {siteConfig.contact.cta}
+                      {sending ? "Wird gesendet..." : siteConfig.contact.cta}
                     </button>
                   </motion.form>
                 )}
