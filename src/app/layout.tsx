@@ -17,7 +17,7 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-const siteUrl = process.env.SITE_URL || "https://coderift7.github.io/aufm-schaeferhof";
+const siteUrl = process.env.SITE_URL || "https://aufmschaeferhof.de";
 
 export const metadata: Metadata = {
   title: siteConfig.meta.title,
