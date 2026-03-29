@@ -1,10 +1,18 @@
 "use client";
 
+import { useCallback } from "react";
 import { siteConfig } from "@/config/site";
+import { img } from "@/lib/utils";
 import { Reveal } from "./Motion";
 
 export default function About() {
   const { about, social } = siteConfig;
+
+  const playBaa = useCallback(() => {
+    const audio = new Audio(img("/images/baa.mp3"));
+    audio.volume = 0.5;
+    audio.play().catch(() => {});
+  }, []);
 
   return (
     <section id="ueber-uns" className="relative bg-background py-28 lg:py-36">
@@ -22,9 +30,25 @@ export default function About() {
 
         <Reveal>
           <div className="mt-10 space-y-5 text-base leading-[1.8] text-muted-foreground sm:text-lg">
-            {about.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
+            {about.paragraphs.map((p, i) => {
+              if (p.includes("gem\u00E4\u00E4\u00E4\u00E4ht")) {
+                const [before, after] = p.split("gem\u00E4\u00E4\u00E4\u00E4ht");
+                return (
+                  <p key={i}>
+                    {before}
+                    <button
+                      type="button"
+                      onClick={playBaa}
+                      className="cursor-pointer font-semibold text-primary underline decoration-warm/40 underline-offset-2 transition-colors hover:text-warm"
+                    >
+                      gem&auml;&auml;&auml;&auml;ht
+                    </button>
+                    {after}
+                  </p>
+                );
+              }
+              return <p key={i}>{p}</p>;
+            })}
             <p className="font-medium text-primary">
               Folgt uns gerne auf{" "}
               <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-warm transition-colors">Instagram</a>
