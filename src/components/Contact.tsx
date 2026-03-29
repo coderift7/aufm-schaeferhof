@@ -127,7 +127,7 @@ export default function Contact() {
                       const form = e.currentTarget;
                       const data = new FormData(form);
                       try {
-                        const res = await fetch("/contact.php", { method: "POST", body: data });
+                        const res = await fetch("https://n8n.hoeger.dev/contact", { method: "POST", body: data });
                         if (res.ok) {
                           setSubmitted(true);
                         } else {
