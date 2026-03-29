@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useEffect } from "react";
 import { siteConfig } from "@/config/site";
 import { img } from "@/lib/utils";
 import { Reveal } from "./Motion";
@@ -8,14 +8,21 @@ import { Reveal } from "./Motion";
 export default function About() {
   const { about, social } = siteConfig;
 
-  const playBaa = useCallback(() => {
-    const audio = new Audio(img("/images/baa.mp3"));
-    audio.volume = 0.5;
-    audio.play().catch(() => {});
+  useEffect(() => {
+    const btn = document.getElementById("baa-btn");
+    const audio = document.getElementById("baa-sound") as HTMLAudioElement;
+    if (!btn || !audio) return;
+    const handler = () => {
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
+    };
+    btn.addEventListener("click", handler);
+    return () => btn.removeEventListener("click", handler);
   }, []);
 
   return (
     <section id="ueber-uns" className="relative bg-background py-28 lg:py-36">
+      <audio id="baa-sound" src={img("/images/baa.mp3")} preload="auto" />
       {/* Decorative top border */}
       <div className="absolute top-0 left-1/2 h-px w-24 -translate-x-1/2 bg-gradient-to-r from-transparent via-border to-transparent" />
 
@@ -37,8 +44,8 @@ export default function About() {
                   <p key={i}>
                     {before}
                     <button
+                      id="baa-btn"
                       type="button"
-                      onClick={playBaa}
                       className="cursor-pointer font-semibold text-primary underline decoration-warm/40 underline-offset-2 transition-colors hover:text-warm"
                     >
                       gem&auml;&auml;&auml;&auml;ht
