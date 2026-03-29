@@ -10,6 +10,12 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
+  const playBaa = () => {
+    const audio = new Audio(img("/images/baa.mp3"));
+    audio.volume = 0.5;
+    audio.play().catch(() => {});
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -29,7 +35,7 @@ export default function Header() {
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 sm:px-8 lg:h-[72px]">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group">
+        <a href="#" onClick={playBaa} className="flex items-center gap-3 group">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={img("/images/logo-aufm-schaeferhof.png")}
