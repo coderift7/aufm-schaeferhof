@@ -62,12 +62,12 @@ export default function Datenschutz() {
               3. Hosting
             </h2>
             <p className="mt-3">
-              Diese Webseite wird bei <strong>GitHub Pages</strong> (GitHub Inc.,
-              88 Colin P Kelly Jr St, San Francisco, CA 94107, USA, ein
-              Unternehmen der Microsoft Corporation) gehostet. Beim Besuch
-              unserer Webseite werden automatisch Informationen in sogenannten
-              Server-Log-Dateien gespeichert, die Ihr Browser automatisch
-              übermittelt. Dies sind insbesondere:
+              Diese Webseite wird bei <strong>BioHost</strong> (BioHost GbR,
+              Deutschland) gehostet. Die Server befinden sich in Deutschland,
+              sodass Ihre Daten ausschließlich innerhalb der EU verarbeitet
+              werden. Beim Besuch unserer Webseite werden automatisch
+              Informationen in sogenannten Server-Log-Dateien gespeichert, die
+              Ihr Browser automatisch übermittelt. Dies sind insbesondere:
             </p>
             <ul className="mt-3 list-inside list-disc space-y-1">
               <li>IP-Adresse des anfragenden Rechners</li>
@@ -82,15 +82,14 @@ export default function Datenschutz() {
               Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6
               Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in der
               technisch fehlerfreien Darstellung und Optimierung unserer
-              Webseite. GitHub hat sich zur Einhaltung des EU-US Data Privacy
-              Frameworks verpflichtet. Weitere Informationen finden Sie in der{" "}
+              Webseite. Weitere Informationen finden Sie in der{" "}
               <a
-                href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+                href="https://www.biohost.de/datenschutz/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-warm underline underline-offset-2"
               >
-                Datenschutzerklärung von GitHub
+                Datenschutzerklärung von BioHost
               </a>
               .
             </p>

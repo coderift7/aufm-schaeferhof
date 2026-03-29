@@ -124,13 +124,13 @@ export default function Contact() {
                         <label htmlFor="name" className="mb-2 block text-sm font-medium text-foreground">
                           Name *
                         </label>
-                        <input type="text" id="name" required placeholder="Ihr Name" className={inputClasses} />
+                        <input type="text" id="name" required placeholder="Euer Name" className={inputClasses} />
                       </div>
                       <div>
                         <label htmlFor="email" className="mb-2 block text-sm font-medium text-foreground">
                           E-Mail *
                         </label>
-                        <input type="email" id="email" required placeholder="ihre@email.de" className={inputClasses} />
+                        <input type="email" id="email" required placeholder="eure@email.de" className={inputClasses} />
                       </div>
                     </div>
                     <div>
@@ -143,7 +143,7 @@ export default function Contact() {
                       <label htmlFor="message" className="mb-2 block text-sm font-medium text-foreground">
                         Nachricht *
                       </label>
-                      <textarea id="message" required rows={4} placeholder="Was können wir für Sie tun?" className={inputClasses} />
+                      <textarea id="message" required rows={4} placeholder="Was können wir für euch tun?" className={inputClasses} />
                     </div>
                     <label className="flex cursor-pointer items-start gap-2.5">
                       <input type="checkbox" required className="mt-0.5 rounded border-border" />

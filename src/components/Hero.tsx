@@ -25,15 +25,6 @@ export default function Hero() {
 
       {/* Content pinned to bottom with generous spacing */}
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-28 sm:px-8">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease }}
-          className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-white/50"
-        >
-          Guteschaf-Zucht · Oldenburger Münsterland
-        </motion.p>
-
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -44,12 +35,12 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5, ease }}
-          className="mt-5 max-w-md text-base leading-relaxed text-white/60 sm:text-lg"
+          className="mt-5 text-sm font-medium uppercase tracking-[0.2em] text-white/50 sm:text-base"
         >
-          {hero.subheadline}
+          {hero.tagline}
         </motion.p>
       </div>
 

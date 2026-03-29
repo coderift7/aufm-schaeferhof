@@ -1,11 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Reveal, StaggerContainer, StaggerItem } from "./Motion";
+
+const linkClass = "text-warm underline underline-offset-2 hover:text-primary transition-colors";
+
+const linkMap: Record<string, { label: string; href: string; external?: boolean }> = {
+  instagram: { label: "Instagram", href: siteConfig.social.instagram, external: true },
+  facebook: { label: "Facebook", href: siteConfig.social.facebook, external: true },
+  homepage_author: { label: "Michael H\u00F6ger", href: "" },
+};
+
+function renderAnswer(text: string): ReactNode[] {
+  const parts = text.split(/\{(\w+)\}/);
+  return parts.map((part, i) => {
+    const link = linkMap[part];
+    if (link) {
+      if (!link.href) return <strong key={i}>{link.label}</strong>;
+      return (
+        <a
+          key={i}
+          href={link.href}
+          className={linkClass}
+          {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        >
+          {link.label}
+        </a>
+      );
+    }
+    return <span key={i}>{part}</span>;
+  });
+}
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -63,7 +92,7 @@ export default function FAQ() {
                         }}
                       >
                         <p className="px-6 pb-5 text-[15px] leading-[1.75] text-muted-foreground">
-                          {item.answer}
+                          {renderAnswer(item.answer)}
                         </p>
                       </motion.div>
                     )}

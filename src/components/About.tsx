@@ -4,6 +4,8 @@ import { siteConfig } from "@/config/site";
 import { Reveal } from "./Motion";
 
 export default function About() {
+  const { about, social } = siteConfig;
+
   return (
     <section id="ueber-uns" className="relative bg-background py-28 lg:py-36">
       {/* Decorative top border */}
@@ -12,14 +14,23 @@ export default function About() {
       <div className="mx-auto max-w-2xl px-6 sm:px-8">
         <Reveal>
           <div className="text-center">
-            <span className="text-xs font-medium uppercase tracking-[0.25em] text-warm">
-              Über uns
-            </span>
-            <h2 className="mt-5 font-heading text-3xl font-bold tracking-tight text-primary sm:text-4xl lg:text-5xl">
-              {siteConfig.about.headline}
+            <h2 className="font-heading text-3xl font-bold tracking-tight text-primary sm:text-4xl lg:text-5xl">
+              {about.headline}
             </h2>
-            <p className="mt-8 text-base leading-[1.8] text-muted-foreground sm:text-lg">
-              {siteConfig.about.text}
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div className="mt-10 space-y-5 text-base leading-[1.8] text-muted-foreground sm:text-lg">
+            {about.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+            <p className="font-medium text-primary">
+              Folgt uns gerne auf{" "}
+              <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-warm transition-colors">Instagram</a>
+              {" / "}
+              <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-warm transition-colors">Facebook</a>
+              {" "}für mehr Einblicke!
             </p>
           </div>
         </Reveal>
