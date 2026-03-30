@@ -107,7 +107,15 @@ export default function Header() {
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={() => setOpen(false)}
+                  onPointerUp={(e) => {
+                    e.preventDefault();
+                    setOpen(false);
+                    // Delay scroll so menu close animation doesn't block navigation
+                    setTimeout(() => {
+                      const el = document.querySelector(item.href);
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }, 150);
+                  }}
                   className="rounded-xl px-4 py-3 text-foreground transition-colors hover:bg-muted"
                 >
                   {item.label}
