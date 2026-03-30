@@ -21,7 +21,7 @@ export default function Contact() {
       <div className="absolute top-0 left-1/2 h-px w-24 -translate-x-1/2 bg-gradient-to-r from-transparent via-border to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8">
-        <div className="grid items-start gap-16 lg:grid-cols-2">
+        <div className="grid items-start gap-10 lg:gap-16 lg:grid-cols-2">
           {/* Left column — Info */}
           <Reveal variants={slideFromLeft}>
             <div>
