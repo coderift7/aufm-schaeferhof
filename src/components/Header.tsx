@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import { img } from "@/lib/utils";
 
@@ -92,39 +92,27 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden border-t border-border/50 bg-background/95 backdrop-blur-xl sm:hidden"
-          >
-            <nav className="flex flex-col gap-1 px-6 py-4">
-              {siteConfig.nav.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onPointerUp={(e) => {
-                    e.preventDefault();
-                    setOpen(false);
-                    // Delay scroll so menu close animation doesn't block navigation
-                    setTimeout(() => {
-                      const el = document.querySelector(item.href);
-                      if (el) el.scrollIntoView({ behavior: "smooth" });
-                    }, 150);
-                  }}
-                  className="rounded-xl px-4 py-3 text-foreground transition-colors hover:bg-muted"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Mobile Menu — no Framer Motion, plain CSS for Android compatibility */}
+      <div
+        className={`grid border-t border-border/50 bg-background/95 backdrop-blur-xl transition-all duration-300 ease-in-out sm:hidden ${
+          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <nav className="flex flex-col gap-1 px-6 py-4">
+            {siteConfig.nav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="rounded-xl px-4 py-3 text-foreground transition-colors hover:bg-muted"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </div>
     </motion.header>
   );
 }
