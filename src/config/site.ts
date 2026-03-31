@@ -35,6 +35,22 @@ export const siteConfig = {
     socialCta: "Folgt uns gerne auf Instagram / Facebook für mehr Einblicke!",
   },
 
+  stories: {
+    headline: "Hofgeschichten",
+    tagline: "Erlebnisse und Geschichten rund um unseren Hof",
+    items: [
+      {
+        title: "Guteschaf-Wolle in New York",
+        year: "2018",
+        text: "Guteschaf mal anders: 2018 durfte etwas Wolle von unserer Weide bei einer Bachelorarbeit einer Hamburger Textildesign-Studentin eine maßgebliche Rolle spielen: Die aus Guteschaflocken gefertigte Hose wurde im September 2018 in New York als eines der zwanzig Finalisten-Werke des \u201EDorothy Waxman Textile Design Prize\u201C ausgestellt.",
+        images: [
+          { src: "/images/wollhose-ausstellung.jpeg", alt: "Wollhose aus Guteschaflocken in der Ausstellung in New York" },
+          { src: "/images/wollhose-nahaufnahme.jpeg", alt: "Nahaufnahme der aus Guteschaflocken gefertigten Hose" },
+        ],
+      },
+    ],
+  },
+
   faq: [
     {
       question: "Was sind Gehörnte Gotlandschafe?",
@@ -89,6 +105,7 @@ export const siteConfig = {
 
   nav: [
     { label: "Über uns", href: "#ueber-uns" },
+    { label: "Hofgeschichten", href: "#hofgeschichten" },
     { label: "Häufige Fragen", href: "#faq" },
     { label: "Kontakt", href: "#kontakt" },
   ],
