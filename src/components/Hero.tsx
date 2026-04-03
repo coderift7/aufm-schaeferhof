@@ -13,14 +13,17 @@ export default function Hero() {
   return (
     <section className="relative flex min-h-[100dvh] flex-col justify-end overflow-hidden">
       {/* Full-bleed background — the sheep are the star */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={img("/images/Foto_Hero.jpg")}
-        alt="Guteschafe auf dem Schäferhof"
-        fetchPriority="high"
-        loading="eager"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
+      <picture>
+        <source srcSet={img("/images/Foto_Hero.webp")} type="image/webp" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={img("/images/Foto_Hero.jpg")}
+          alt="Guteschafe auf dem Schäferhof"
+          fetchPriority="high"
+          loading="eager"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </picture>
 
       {/* Cinematic bottom gradient — keeps sheep faces clear */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: siteConfig.meta.title,
     description: siteConfig.meta.description,
     images: [{
-      url: `${siteUrl}/images/Foto_Hero.jpg`,
+      url: `${siteUrl}/images/og-image.jpg`,
       width: 1200,
       height: 630,
       alt: "Guteschafe auf dem Schäferhof",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.meta.title,
     description: siteConfig.meta.description,
-    images: [`${siteUrl}/images/Foto_Hero.jpg`],
+    images: [`${siteUrl}/images/og-image.jpg`],
   },
   robots: { index: true, follow: true },
 };
