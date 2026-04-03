@@ -1,6 +1,13 @@
 <?php
 // Contact form handler for aufmschaeferhof.de
-// Sends form data as email using PHP mail()
+// Sends form data via SMTP using PHPMailer
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require __DIR__ . '/phpmailer/Exception.php';
+require __DIR__ . '/phpmailer/PHPMailer.php';
+require __DIR__ . '/phpmailer/SMTP.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -13,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Honeypot check (spam protection)
 if (!empty($_POST['website'])) {
-    // Bot filled hidden field
     echo json_encode(['success' => true]);
     exit;
 }
@@ -45,10 +51,7 @@ if (preg_match('/[\r\n]/', $name) || preg_match('/[\r\n]/', $email)) {
     exit;
 }
 
-// Build email
-$to = 'info@aufmschaeferhof.de';
-$subject = "Kontaktanfrage von {$name} über aufmschaeferhof.de";
-
+// Build email body
 $body  = "Neue Kontaktanfrage über die Website:\n\n";
 $body .= "Name: {$name}\n";
 $body .= "E-Mail: {$email}\n";
@@ -57,17 +60,33 @@ if (!empty($phone)) {
 }
 $body .= "\nNachricht:\n{$message}\n";
 
-$headers  = "From: noreply@aufmschaeferhof.de\r\n";
-$headers .= "Reply-To: {$email}\r\n";
-$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-$headers .= "X-Mailer: AufmSchaeferhof-Kontaktformular\r\n";
+// Send via SMTP
+$mail = new PHPMailer(true);
 
-// Send
-$sent = mail($to, $subject, $body, $headers);
+try {
+    // SMTP config
+    $mail->isSMTP();
+    $mail->Host       = 'mail.biohost.de';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'noreply@aufmschaeferhof.de';
+    $mail->Password   = '%%SMTP_PASSWORD%%';
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port       = 587;
+    $mail->CharSet    = 'UTF-8';
 
-if ($sent) {
+    // Sender & recipient
+    $mail->setFrom('noreply@aufmschaeferhof.de', 'Auf\'m Schäferhof Kontaktformular');
+    $mail->addAddress('info@aufmschaeferhof.de');
+    $mail->addReplyTo($email, $name);
+
+    // Content
+    $mail->isHTML(false);
+    $mail->Subject = "Kontaktanfrage von {$name} über aufmschaeferhof.de";
+    $mail->Body    = $body;
+
+    $mail->send();
     echo json_encode(['success' => true]);
-} else {
+} catch (Exception $e) {
     http_response_code(500);
     echo json_encode(['error' => 'Mail konnte nicht gesendet werden']);
 }
