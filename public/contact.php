@@ -20,8 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Origin check — only allow requests from our own domain
-$origin = $_SERVER['HTTP_ORIGIN'] ?? $_SERVER['HTTP_REFERER'] ?? '';
-if ($origin && strpos($origin, 'https://aufmschaeferhof.de') !== 0) {
+$allowed_origins = ['https://aufmschaeferhof.de', 'https://www.aufmschaeferhof.de'];
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+if (!$origin || !in_array(rtrim($origin, '/'), $allowed_origins, true)) {
     http_response_code(403);
     echo json_encode(['error' => 'Forbidden']);
     exit;

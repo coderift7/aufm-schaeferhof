@@ -17,6 +17,8 @@ export default function Hero() {
       <img
         src={img("/images/Foto_Hero.jpg")}
         alt="Guteschafe auf dem Schäferhof"
+        fetchPriority="high"
+        loading="eager"
         className="absolute inset-0 h-full w-full object-cover"
       />
 

@@ -6,7 +6,7 @@ import { img } from "@/lib/utils";
 import { Reveal } from "./Motion";
 
 export default function About() {
-  const { about, social } = siteConfig;
+  const { about } = siteConfig;
 
   useEffect(() => {
     const btn = document.getElementById("baa-btn");

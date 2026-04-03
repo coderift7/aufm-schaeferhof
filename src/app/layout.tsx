@@ -31,6 +31,18 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: siteConfig.meta.title,
     description: siteConfig.meta.description,
+    images: [{
+      url: `${siteUrl}/images/Foto_Hero.jpg`,
+      width: 1200,
+      height: 630,
+      alt: "Guteschafe auf dem Schäferhof",
+    }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.meta.title,
+    description: siteConfig.meta.description,
+    images: [`${siteUrl}/images/Foto_Hero.jpg`],
   },
   robots: { index: true, follow: true },
 };
