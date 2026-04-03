@@ -26,7 +26,7 @@ jobs:
       - run: npm run build
 
       - name: Inject SMTP password
-        run: sed -i "s/%%SMTP_PASSWORD%%/${{ secrets.SMTP_PASSWORD }}/" ./out/contact.php
+        run: sed -i "s|%%SMTP_PASSWORD%%|${{ secrets.SMTP_PASSWORD }}|" ./out/contact.php
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
