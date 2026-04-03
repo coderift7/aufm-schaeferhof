@@ -8,7 +8,10 @@
     "build:github": "GITHUB_PAGES=true next build",
     "build:biohost": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:lighthouse": "lhci autorun"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -20,6 +23,8 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.15.1",
+    "@playwright/test": "^1.59.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
