@@ -131,7 +131,8 @@ export default function Contact() {
                         if (res.ok) {
                           setSubmitted(true);
                         } else {
-                          setError("Nachricht konnte nicht gesendet werden. Bitte versucht es später erneut.");
+                          const body = await res.json().catch(() => ({}));
+                          setError(body.error || "Nachricht konnte nicht gesendet werden. Bitte versucht es später erneut.");
                         }
                       } catch {
                         setError("Verbindungsfehler. Bitte versucht es später erneut.");

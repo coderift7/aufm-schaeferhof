@@ -1,6 +1,7 @@
 <?php
 // Contact form handler for aufmschaeferhof.de
 // Sends form data via SMTP using PHPMailer
+// PHPMailer v6.9.x (manual vendor copy, check for updates periodically)
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -17,6 +18,33 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['error' => 'Method not allowed']);
     exit;
 }
+
+// Origin check — only allow requests from our own domain
+$origin = $_SERVER['HTTP_ORIGIN'] ?? $_SERVER['HTTP_REFERER'] ?? '';
+if ($origin && strpos($origin, 'https://aufmschaeferhof.de') !== 0) {
+    http_response_code(403);
+    echo json_encode(['error' => 'Forbidden']);
+    exit;
+}
+
+// Rate limiting — max 5 requests per IP per hour (file-based)
+$rateDir = sys_get_temp_dir() . '/schaeferhof_rate';
+if (!is_dir($rateDir)) {
+    @mkdir($rateDir, 0700);
+}
+$rateFile = $rateDir . '/' . md5($_SERVER['REMOTE_ADDR']);
+$rateData = @file_get_contents($rateFile);
+$rate = $rateData ? json_decode($rateData, true) : ['count' => 0, 'reset' => time() + 3600];
+if ($rate['reset'] < time()) {
+    $rate = ['count' => 0, 'reset' => time() + 3600];
+}
+if ($rate['count'] >= 5) {
+    http_response_code(429);
+    echo json_encode(['error' => 'Zu viele Anfragen. Bitte wartet eine Stunde.']);
+    exit;
+}
+$rate['count']++;
+@file_put_contents($rateFile, json_encode($rate));
 
 // Honeypot check (spam protection)
 if (!empty($_POST['website'])) {
@@ -43,6 +71,20 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo json_encode(['error' => 'Ungültige E-Mail-Adresse']);
     exit;
 }
+
+// Validate phone (optional, max 30 chars, only allowed characters)
+if (!empty($phone)) {
+    $phone = substr($phone, 0, 30);
+    if (!preg_match('/^[0-9+\-\s()\/]{1,30}$/', $phone)) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Ungültige Telefonnummer']);
+        exit;
+    }
+}
+
+// Validate name and message length
+$name = substr($name, 0, 100);
+$message = substr($message, 0, 5000);
 
 // Prevent email header injection
 if (preg_match('/[\r\n]/', $name) || preg_match('/[\r\n]/', $email)) {
@@ -87,6 +129,7 @@ try {
     $mail->send();
     echo json_encode(['success' => true]);
 } catch (Exception $e) {
+    error_log('[contact.php] PHPMailer error: ' . $e->getMessage());
     http_response_code(500);
     echo json_encode(['error' => 'Mail konnte nicht gesendet werden']);
 }

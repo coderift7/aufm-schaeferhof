@@ -26,7 +26,18 @@ jobs:
       - run: npm run build
 
       - name: Inject SMTP password
-        run: sed -i "s|%%SMTP_PASSWORD%%|${{ secrets.SMTP_PASSWORD }}|" ./out/contact.php
+        env:
+          SMTP_PW: ${{ secrets.SMTP_PASSWORD }}
+        run: |
+          ESCAPED=$(printf '%s\n' "$SMTP_PW" | sed 's/[&/\]/\\&/g')
+          sed -i "s|%%SMTP_PASSWORD%%|${ESCAPED}|" ./out/contact.php
+
+      - name: Verify SMTP password injected
+        run: |
+          if grep -q '%%SMTP_PASSWORD%%' ./out/contact.php; then
+            echo "ERROR: SMTP_PASSWORD was not injected!"
+            exit 1
+          fi
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
