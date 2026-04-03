@@ -133,6 +133,32 @@ test('page has exactly one h1', async ({ page }) => {
   expect(await h1s.count()).toBe(1);
 });
 
+// ── Hero image & WebP ───────────────────────────────────────
+
+test('hero uses picture element with WebP source', async ({ page }) => {
+  await page.goto('/');
+  const picture = page.locator('section picture');
+  await expect(picture).toBeAttached();
+  const webpSource = picture.locator('source[type="image/webp"]');
+  await expect(webpSource).toHaveAttribute('srcset', /Foto_Hero\.webp/);
+  const fallbackImg = picture.locator('img');
+  await expect(fallbackImg).toHaveAttribute('src', /Foto_Hero\.jpg/);
+});
+
+// ── OG image ────────────────────────────────────────────────
+
+test('og:image points to dedicated og-image.jpg', async ({ page }) => {
+  await page.goto('/');
+  const ogImage = page.locator('meta[property="og:image"]');
+  await expect(ogImage).toHaveAttribute('content', /og-image\.jpg/);
+});
+
+test('twitter:image points to dedicated og-image.jpg', async ({ page }) => {
+  await page.goto('/');
+  const twitterImage = page.locator('meta[name="twitter:image"]');
+  await expect(twitterImage).toHaveAttribute('content', /og-image\.jpg/);
+});
+
 // ── Performance basics ───────────────────────────────────────
 
 test('homepage loads within 5 seconds', async ({ page }) => {
