@@ -12,7 +12,7 @@ const linkClass = "text-warm underline underline-offset-2 hover:text-primary tra
 const linkMap: Record<string, { label: string; href: string; external?: boolean }> = {
   instagram: { label: "Instagram", href: siteConfig.social.instagram, external: true },
   facebook: { label: "Facebook", href: siteConfig.social.facebook, external: true },
-  homepage_author: { label: "Michael H\u00F6ger", href: "" },
+  homepage_author: { label: "Michael Höger", href: "https://hoeger.dev", external: true },
 };
 
 function renderAnswer(text: string): ReactNode[] {
