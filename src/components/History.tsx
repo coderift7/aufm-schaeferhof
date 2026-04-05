@@ -119,7 +119,7 @@ export default function History() {
                     className="flex flex-1 items-center gap-4 rounded-2xl border border-border bg-card p-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)]"
                   >
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-muted/60 text-xl">
-                      📋
+                      📖
                     </span>
                     <div>
                       <span className="block text-sm font-semibold text-primary">

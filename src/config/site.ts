@@ -85,10 +85,10 @@ export const siteConfig = {
     author: "Text: Dr. Frithjof Erdmann, Institut f\u00FCr Landschafts\u00F6kologie und Naturschutz, Greifswald",
     downloads: [
       {
-        title: "Zuchtprogramm Guteschaf",
-        description: "Offizielles Zuchtprogramm des Landes-Schafzuchtverbandes Weser-Ems",
-        file: "/Zuchtprogramm-Guteschaf.pdf",
-        meta: "PDF \u00B7 4 Seiten \u00B7 800 KB",
+        title: "Handbuch der Guteschafbesitzer",
+        description: "Schwedisches Handbuch \u2014 Herkunft, Haltung, Zucht, Fortpflanzung, Nutzung",
+        file: "/Handbuch-der-Guteschafbesitzer.pdf",
+        meta: "PDF \u00B7 62 Seiten \u00B7 22 MB",
       },
     ],
   },
