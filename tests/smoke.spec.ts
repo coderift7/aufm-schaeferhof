@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 
 // All routes that must load without errors
-const routes = ['/', '/datenschutz', '/impressum'];
+const routes = ['/', '/datenschutz', '/impressum', '/bildnachweis'];
 
 // Anchor sections on the homepage
-const sections = ['ueber-uns', 'hofgeschichten', 'kontakt', 'faq'];
+const sections = ['ueber-uns', 'das-guteschaf', 'hofgeschichten', 'kontakt', 'faq'];
 
 // ── Page load ────────────────────────────────────────────────
 
