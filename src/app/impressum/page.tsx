@@ -3,7 +3,11 @@ import { ArrowLeft } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { href } from "@/lib/utils";
 
-export const metadata: Metadata = { title: `Impressum – ${siteConfig.name}` };
+export const metadata: Metadata = {
+  title: `Impressum – ${siteConfig.name}`,
+  description: "Impressum und Kontaktdaten der Familie Schäfer – Auf'm Schäferhof in Friesoythe-Markhausen.",
+  alternates: { canonical: "/impressum/" },
+};
 
 export default function Impressum() {
   return (

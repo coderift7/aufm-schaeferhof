@@ -3,7 +3,11 @@ import { ArrowLeft } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { href } from "@/lib/utils";
 
-export const metadata: Metadata = { title: `Datenschutz – ${siteConfig.name}` };
+export const metadata: Metadata = {
+  title: `Datenschutz – ${siteConfig.name}`,
+  description: "Datenschutzerklärung von Auf'm Schäferhof – Informationen zur Datenverarbeitung gemäß DSGVO.",
+  alternates: { canonical: "/datenschutz/" },
+};
 
 export default function Datenschutz() {
   return (

@@ -65,7 +65,7 @@ export default function RootLayout({
               mainEntity: siteConfig.faq.map((item) => ({
                 "@type": "Question",
                 name: item.question,
-                acceptedAnswer: { "@type": "Answer", text: item.answer },
+                acceptedAnswer: { "@type": "Answer", text: item.answer.replace("{homepage_author}", "Michael Höger (hoeger.dev)") },
               })),
             }),
           }}
