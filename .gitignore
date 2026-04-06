@@ -26,6 +26,8 @@
 # misc
 .DS_Store
 *.pem
+.sync-conflict-*
+.superpowers
 
 # original uncompressed images
 *_original.*
@@ -45,3 +47,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local photo assets
+/fotos/
