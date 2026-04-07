@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import History from "@/components/History";
+import Animals from "@/components/Animals";
 import Stories from "@/components/Stories";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
@@ -15,6 +16,7 @@ export default function Home() {
         <Hero />
         <About />
         <History />
+        <Animals />
         <Stories />
         <FAQ />
         <Contact />

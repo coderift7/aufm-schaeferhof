@@ -4,7 +4,7 @@ import { test, expect } from '@playwright/test';
 const routes = ['/', '/datenschutz', '/impressum', '/bildnachweis'];
 
 // Anchor sections on the homepage
-const sections = ['ueber-uns', 'das-guteschaf', 'hofgeschichten', 'kontakt', 'faq'];
+const sections = ['ueber-uns', 'das-guteschaf', 'unsere-tiere', 'hofgeschichten', 'kontakt', 'faq'];
 
 // ── Page load ────────────────────────────────────────────────
 

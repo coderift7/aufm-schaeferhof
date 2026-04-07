@@ -93,6 +93,41 @@ export const siteConfig = {
     ],
   },
 
+  animals: {
+    headline: "Unsere Tiere",
+    tagline: "Die Herde vom Schäferhof",
+    categories: [
+      {
+        label: "Schafe",
+        current: [
+          { name: "Lina", src: "/images/tiere/lina.webp", alt: "Herdenchefin Lina mit Lamm auf der Sommerweide" },
+          { name: "Bambi", src: "/images/tiere/bambi.webp", alt: "Guteschaf Bambi mit ihren Lämmern auf der Löwenzahnwiese" },
+          { name: "Emma", src: "/images/tiere/emma.webp", alt: "Guteschaf Emma beim Grasen auf der Weide" },
+          { name: "Lilo", src: "/images/tiere/lilo.webp", alt: "Guteschaf Lilo im Herbstlaub" },
+          { name: "Lotte", src: "/images/tiere/lotte.webp", alt: "Guteschaf Lotte auf dem Weg zur Weide" },
+        ],
+        former: [
+          { name: "Kriemhild", src: "/images/tiere/kriemhild.webp", alt: "Guteschaf Kriemhild mit ihrem Lamm" },
+          { name: "Perseus", src: "/images/tiere/perseus.webp", alt: "Guteschaf-Bock Perseus auf der Weide" },
+          { name: "Merlin", src: "/images/tiere/merlin.webp", alt: "Guteschaf-Bock Merlin im Profil" },
+          { name: "Ikarus", src: "/images/tiere/ikarus.webp", alt: "Guteschaf-Bock Ikarus auf der Herbstweide" },
+          { name: "Cicero", src: "/images/tiere/cicero.webp", alt: "Guteschaf-Bock Cicero mit Herbstlaub im Hintergrund" },
+          { name: "Leopold", src: "/images/tiere/leopold.webp", alt: "Guteschaf-Lamm Leopold im Stall" },
+        ],
+      },
+      {
+        label: "Hunde & Pferd",
+        current: [
+          { name: "Tina", src: "/images/tiere/tina.webp", alt: "Hündin Tina im Sommer" },
+          { name: "Shiva", src: "/images/tiere/shiva.webp", alt: "Pferd Shiva auf der Weide" },
+        ],
+        former: [
+          { name: "Honey", src: "/images/tiere/honey.webp", alt: "Schäferhündin Honey im hohen Gras" },
+        ],
+      },
+    ],
+  },
+
   stories: {
     headline: "Hofgeschichten",
     tagline: "Erlebnisse und Geschichten rund um unseren Hof",
@@ -164,6 +199,7 @@ export const siteConfig = {
   nav: [
     { label: "Über uns", href: "#ueber-uns" },
     { label: "Das Guteschaf", href: "#das-guteschaf" },
+    { label: "Unsere Tiere", href: "#unsere-tiere" },
     { label: "Hofgeschichten", href: "#hofgeschichten" },
     { label: "Häufige Fragen", href: "#faq" },
     { label: "Kontakt", href: "#kontakt" },
