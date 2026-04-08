@@ -58,15 +58,17 @@ export default function History() {
                 delay={0.15}
                 className="flex-1"
               >
-                <div className="overflow-hidden rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+                <div className={`overflow-hidden rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.04)] ${
+                      section.image.portrait ? "aspect-[3/4]" : "aspect-[4/3]"
+                    }`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={img(section.image.src)}
                     alt={section.image.alt}
-                    className={`w-full transition-transform duration-500 hover:scale-105 ${
+                    className={`w-full h-full transition-transform duration-500 hover:scale-105 ${
                       section.image.portrait
-                        ? "h-auto max-h-[500px] object-contain"
-                        : "aspect-[4/3] object-cover"
+                        ? "object-contain"
+                        : "object-cover"
                     }`}
                     loading="lazy"
                   />
