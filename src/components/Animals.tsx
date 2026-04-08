@@ -160,17 +160,11 @@ export default function Animals() {
                 <span className="font-heading text-2xl font-bold text-primary sm:text-3xl">
                   {current.name}
                 </span>
-                <span
-                  className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${
-                    current.status === "aktuell"
-                      ? "bg-warm/10 text-warm"
-                      : "bg-muted text-muted-foreground"
-                  }`}
-                >
-                  {current.status === "aktuell"
-                    ? "Aktuelle Herde"
-                    : "Ehemalig"}
-                </span>
+                {catIndex === 0 && current.status === "aktuell" && (
+                  <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium bg-warm/10 text-warm">
+                    Aktuelle Herde
+                  </span>
+                )}
               </motion.div>
             </AnimatePresence>
 
