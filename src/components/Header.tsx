@@ -104,7 +104,14 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                onClick={() => setOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpen(false);
+                  const target = item.href;
+                  setTimeout(() => {
+                    document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
+                  }, 350);
+                }}
                 className="rounded-xl px-4 py-3 text-foreground transition-colors hover:bg-muted"
               >
                 {item.label}
