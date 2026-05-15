@@ -40,19 +40,25 @@ for (const id of sections) {
 
 // ── Navigation links ─────────────────────────────────────────
 
-test('header navigation links point to valid anchors', async ({ page }) => {
+test('header navigation links point to valid routes and anchors', async ({ page }) => {
   await page.goto('/');
-  const navLinks = page.locator('nav a[href^="#"]');
-  const count = await navLinks.count();
-  expect(count).toBeGreaterThan(0);
 
-  for (let i = 0; i < count; i++) {
-    const href = await navLinks.nth(i).getAttribute('href');
-    if (href) {
-      const anchor = href.replace('#', '');
-      await expect(page.locator(`#${anchor}`)).toBeAttached();
-    }
+  await expect(page.locator('nav').first().locator('a')).toHaveText([
+    'Über uns',
+    'Das Guteschaf',
+    'Unsere Tiere',
+    'Marktplatz',
+    'Hofgeschichten',
+    'Häufige Fragen',
+    'Kontakt',
+  ]);
+
+  for (const id of sections) {
+    await expect(page.locator(`nav a[href="/#${id}"]`).first()).toBeAttached();
+    await expect(page.locator(`#${id}`)).toBeAttached();
   }
+
+  await expect(page.locator('nav a[href="/marktplatz/"]').first()).toBeAttached();
 });
 
 test('footer contains legal links', async ({ page }) => {
@@ -181,6 +187,11 @@ test('marktplatz hero image loads', async ({ page }) => {
   const heroImage = page.getByAltText('Schafe auf der Weide am Futtertrog');
   await expect(heroImage).toBeVisible();
   await expect(heroImage).toHaveAttribute('src', /marktplatz-hero\.webp/);
+});
+
+test('marktplatz shows site navigation with marketplace item', async ({ page }) => {
+  await page.goto('/marktplatz');
+  await expect(page.locator('header nav a[href="/marktplatz/"]').first()).toBeAttached();
 });
 
 // ── Performance basics ───────────────────────────────────────

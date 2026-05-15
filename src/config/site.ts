@@ -197,11 +197,12 @@ export const siteConfig = {
   },
 
   nav: [
-    { label: "Über uns", href: "#ueber-uns" },
-    { label: "Das Guteschaf", href: "#das-guteschaf" },
-    { label: "Unsere Tiere", href: "#unsere-tiere" },
-    { label: "Hofgeschichten", href: "#hofgeschichten" },
-    { label: "Häufige Fragen", href: "#faq" },
-    { label: "Kontakt", href: "#kontakt" },
+    { label: "Über uns", href: "/#ueber-uns" },
+    { label: "Das Guteschaf", href: "/#das-guteschaf" },
+    { label: "Unsere Tiere", href: "/#unsere-tiere" },
+    { label: "Marktplatz", href: "/marktplatz/" },
+    { label: "Hofgeschichten", href: "/#hofgeschichten" },
+    { label: "Häufige Fragen", href: "/#faq" },
+    { label: "Kontakt", href: "/#kontakt" },
   ],
 };

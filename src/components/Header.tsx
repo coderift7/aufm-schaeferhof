@@ -4,11 +4,16 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
-import { img } from "@/lib/utils";
+import { href, img } from "@/lib/utils";
 
-export default function Header() {
+type HeaderProps = {
+  solid?: boolean;
+};
+
+export default function Header({ solid = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const elevated = solid || scrolled;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -22,27 +27,27 @@ export default function Header() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+        elevated
           ? "bg-background/80 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.04)]"
           : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 sm:px-8 lg:h-[72px]">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group">
+        <a href={href("/")} className="group flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={img("/images/logo-aufm-schaeferhof.png")}
             alt="Auf'm Schäferhof Logo"
             className={`h-10 w-10 object-contain transition-all duration-300 ${
-              scrolled
+              elevated
                 ? ""
                 : "invert"
             }`}
           />
           <span
             className={`font-heading text-base font-semibold tracking-tight transition-colors duration-300 ${
-              scrolled ? "text-primary" : "text-white"
+              elevated ? "text-primary" : "text-white"
             }`}
           >
             {siteConfig.name}
@@ -50,14 +55,14 @@ export default function Header() {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden items-center gap-2 sm:flex">
+        <nav className="hidden items-center gap-1 lg:flex">
           {siteConfig.nav.map((item) =>
-            item.href === "#kontakt" ? (
+            item.href === "/#kontakt" ? (
               <a
                 key={item.href}
-                href={item.href}
+                href={href(item.href)}
                 className={`ml-2 rounded-full px-5 py-2 text-sm font-medium transition-all duration-300 ${
-                  scrolled
+                  elevated
                     ? "bg-primary text-white hover:bg-primary/90"
                     : "bg-white/10 text-white backdrop-blur-sm hover:bg-white/20"
                 }`}
@@ -67,9 +72,9 @@ export default function Header() {
             ) : (
               <a
                 key={item.href}
-                href={item.href}
+                href={href(item.href)}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                  scrolled
+                  elevated
                     ? "text-muted-foreground hover:text-primary"
                     : "text-white/70 hover:text-white"
                 }`}
@@ -83,8 +88,8 @@ export default function Header() {
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className={`cursor-pointer rounded-full p-2 transition-colors sm:hidden ${
-            scrolled ? "text-primary" : "text-white"
+          className={`cursor-pointer rounded-full p-2 transition-colors lg:hidden ${
+            elevated ? "text-primary" : "text-white"
           }`}
           aria-label="Menü"
         >
@@ -96,22 +101,15 @@ export default function Header() {
       <div
         className={`grid border-t border-border/50 bg-background/95 backdrop-blur-xl transition-all duration-300 ease-in-out sm:hidden ${
           open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-        }`}
+        } lg:hidden`}
       >
         <div className="overflow-hidden">
           <nav className="flex flex-col gap-1 px-6 py-4">
             {siteConfig.nav.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setOpen(false);
-                  const target = item.href;
-                  setTimeout(() => {
-                    document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
-                  }, 350);
-                }}
+                href={href(item.href)}
+                onClick={() => setOpen(false)}
                 className="rounded-xl px-4 py-3 text-foreground transition-colors hover:bg-muted"
               >
                 {item.label}

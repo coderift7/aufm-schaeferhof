@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowLeft, MessageSquare } from "lucide-react";
+import Header from "@/components/Header";
 import { siteConfig } from "@/config/site";
 import { href, img } from "@/lib/utils";
 
@@ -62,6 +63,7 @@ const statusLabel: Record<Listing["status"], string> = {
 export default function Marktplatz() {
   return (
     <div className="min-h-screen overflow-hidden bg-background">
+      <Header solid />
       <section className="relative isolate min-h-[72svh] overflow-hidden border-b border-primary/15">
         <Image
           src={img("/fotos/marktplatz/marktplatz-hero.webp")}
