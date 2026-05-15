@@ -104,11 +104,10 @@ export default function Marktplatz() {
       <div className="mx-auto max-w-4xl px-6 py-16 sm:px-8 sm:py-24">
         <p className="text-lg leading-8 text-muted-foreground">
           Manchmal kommt der Punkt, an dem ein Tier weiterziehen darf — in
-          einen neuen Garten, eine andere Herde, zu Menschen, die genau dieses
-          eine Schaf gesucht haben. Wir möchten unsere Tiere nicht einfach
-          »abgeben«, sondern weitergeben — mit allem, was ihre Geschichte
-          ausmacht. Stammbaum, Charakter, Eigenheiten. Damit niemand bei Null
-          anfängt.
+          einen neuen Garten, eine andere Herde, zu Menschen, die genau so ein
+          Schaf gesucht haben. Auf dem Marktplatz zeigen wir transparent, wer
+          aktuell ein passendes neues Zuhause sucht — mit Stammbaum,
+          Charakter, Eigenheiten und allem, was ihre Geschichte ausmacht.
         </p>
       </div>
 

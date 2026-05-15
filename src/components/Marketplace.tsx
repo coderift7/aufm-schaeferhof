@@ -65,10 +65,10 @@ export default function Marketplace() {
             </h2>
             <p className="mt-6 text-base leading-[1.8] text-muted-foreground sm:text-lg">
               Manchmal kommt der Punkt, an dem ein Tier weiterziehen darf — in
-              einen neuen Garten, eine andere Herde, zu Menschen, die genau
-              dieses eine Schaf gesucht haben. Wir möchten unsere Tiere nicht
-              einfach »abgeben«, sondern weitergeben: mit Herkunft, Charakter,
-              Eigenheiten und allem, was dazugehört.
+              einen neuen Garten, eine andere Herde, zu Menschen, die genau so
+              ein Schaf gesucht haben. Auf dem Marktplatz zeigen wir
+              transparent, wer aktuell ein passendes neues Zuhause sucht — mit
+              Herkunft, Charakter, Eigenheiten und allem, was dazugehört.
             </p>
           </div>
         </Reveal>
