@@ -4,7 +4,7 @@ import { test, expect } from '@playwright/test';
 const routes = ['/', '/datenschutz', '/impressum', '/bildnachweis', '/marktplatz'];
 
 // Anchor sections on the homepage
-const sections = ['ueber-uns', 'das-guteschaf', 'unsere-tiere', 'hofgeschichten', 'kontakt', 'faq'];
+const sections = ['ueber-uns', 'das-guteschaf', 'unsere-tiere', 'marktplatz', 'hofgeschichten', 'kontakt', 'faq'];
 
 // ── Page load ────────────────────────────────────────────────
 
@@ -57,8 +57,6 @@ test('header navigation links point to valid routes and anchors', async ({ page 
     await expect(page.locator(`nav a[href="/#${id}"]`).first()).toBeAttached();
     await expect(page.locator(`#${id}`)).toBeAttached();
   }
-
-  await expect(page.locator('nav a[href="/marktplatz/"]').first()).toBeAttached();
 });
 
 test('footer contains legal links', async ({ page }) => {
@@ -172,6 +170,25 @@ test('marktplatz shows Bambi listing', async ({ page }) => {
   await expect(page.locator('#bambi')).toBeVisible();
 });
 
+test('homepage marketplace teaser links to marketplace page', async ({ page }) => {
+  await page.goto('/');
+  const teaser = page.locator('#marktplatz');
+  await expect(teaser).toContainText('Marktplatz');
+  await expect(teaser.getByRole('link', { name: /Zum Marktplatz/ })).toHaveAttribute('href', '/marktplatz/');
+});
+
+test('homepage marketplace anchor lands on marketplace section', async ({ page }) => {
+  await page.goto('/#marktplatz');
+  const teaser = page.locator('#marktplatz');
+  await expect(teaser).toBeAttached();
+  await expect
+    .poll(async () => {
+      const top = await teaser.evaluate((element) => element.getBoundingClientRect().top);
+      return top >= 0 && top <= 120;
+    })
+    .toBe(true);
+});
+
 test('marktplatz Bambi status badge says available', async ({ page }) => {
   await page.goto('/marktplatz');
   await expect(page.locator('#bambi')).toContainText('Sucht ein Zuhause');
@@ -191,7 +208,7 @@ test('marktplatz hero image loads', async ({ page }) => {
 
 test('marktplatz shows site navigation with marketplace item', async ({ page }) => {
   await page.goto('/marktplatz');
-  await expect(page.locator('header nav a[href="/marktplatz/"]').first()).toBeAttached();
+  await expect(page.locator('header nav a[href="/#marktplatz"]').first()).toBeAttached();
 });
 
 // ── Performance basics ───────────────────────────────────────

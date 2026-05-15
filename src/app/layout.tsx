@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lora, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
+import HashScroller from "@/components/HashScroller";
 
 const lora = Lora({
   subsets: ["latin"],
@@ -98,7 +99,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <HashScroller />
+        {children}
+      </body>
     </html>
   );
 }
