@@ -170,11 +170,11 @@ test('marktplatz shows Bambi listing', async ({ page }) => {
   await expect(page.locator('#bambi')).toBeVisible();
 });
 
-test('homepage marketplace teaser links to marketplace page', async ({ page }) => {
+test('homepage marketplace teaser has no extra marketplace page link', async ({ page }) => {
   await page.goto('/');
   const teaser = page.locator('#marktplatz');
   await expect(teaser).toContainText('Marktplatz');
-  await expect(teaser.getByRole('link', { name: /Zum Marktplatz/ })).toHaveAttribute('href', '/marktplatz/');
+  await expect(teaser.getByRole('link')).toHaveCount(0);
 });
 
 test('homepage marketplace anchor lands on marketplace section', async ({ page }) => {

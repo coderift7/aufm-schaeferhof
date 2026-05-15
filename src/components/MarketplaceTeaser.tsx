@@ -1,7 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import { href, img } from "@/lib/utils";
+import { img } from "@/lib/utils";
 import { Reveal } from "./Motion";
 
 export default function MarketplaceTeaser() {
@@ -45,13 +44,6 @@ export default function MarketplaceTeaser() {
                 hier die wichtigsten Informationen: Herkunft, Charakter,
                 Besonderheiten und den direkten Kontakt zum Hof.
               </p>
-              <a
-                href={href("/marktplatz/")}
-                className="mt-9 inline-flex items-center gap-2 border-b border-primary/50 pb-1 text-sm font-semibold text-primary transition-colors hover:border-primary hover:text-warm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-4 focus:ring-offset-card"
-              >
-                Zum Marktplatz
-                <ArrowRight className="h-4 w-4" />
-              </a>
             </div>
           </div>
         </Reveal>
