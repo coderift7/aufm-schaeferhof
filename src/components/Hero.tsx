@@ -15,7 +15,6 @@ export default function Hero() {
       {/* Full-bleed background — the sheep are the star */}
       <picture>
         <source srcSet={img("/images/Foto_Hero.webp")} type="image/webp" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={img("/images/Foto_Hero.jpg")}
           alt="Guteschafe auf dem Schäferhof"

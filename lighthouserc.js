@@ -4,6 +4,8 @@ module.exports = {
       startServerCommand: 'npx serve out -l 8080',
       url: [
         'http://localhost:8080/',
+        'http://localhost:8080/marktplatz',
+        'http://localhost:8080/natur-im-garten',
         'http://localhost:8080/datenschutz',
         'http://localhost:8080/impressum',
       ],

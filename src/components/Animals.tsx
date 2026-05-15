@@ -28,20 +28,21 @@ export default function Animals() {
   const [[slideIndex, direction], setSlideIndex] = useState([0, 0]);
 
   const category = animals.categories[catIndex];
+  const { current: currentAnimals, former: formerAnimals } = category;
 
   // Build flat slide list: sheep → current first, others → former first
   const slides: Slide[] = useMemo(
     () =>
       catIndex === 0
         ? [
-            ...category.current.map((a) => ({ ...a, status: "aktuell" as const })),
-            ...category.former.map((a) => ({ ...a, status: "ehemalig" as const })),
+            ...currentAnimals.map((a) => ({ ...a, status: "aktuell" as const })),
+            ...formerAnimals.map((a) => ({ ...a, status: "ehemalig" as const })),
           ]
         : [
-            ...category.former.map((a) => ({ ...a, status: "ehemalig" as const })),
-            ...category.current.map((a) => ({ ...a, status: "aktuell" as const })),
+            ...formerAnimals.map((a) => ({ ...a, status: "ehemalig" as const })),
+            ...currentAnimals.map((a) => ({ ...a, status: "aktuell" as const })),
           ],
-    [category, catIndex]
+    [currentAnimals, formerAnimals, catIndex]
   );
 
   const paginate = useCallback(

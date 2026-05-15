@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 // All routes that must load without errors
-const routes = ['/', '/datenschutz', '/impressum', '/bildnachweis'];
+const routes = ['/', '/datenschutz', '/impressum', '/bildnachweis', '/marktplatz'];
 
 // Anchor sections on the homepage
 const sections = ['ueber-uns', 'das-guteschaf', 'unsere-tiere', 'hofgeschichten', 'kontakt', 'faq'];
@@ -157,6 +157,30 @@ test('twitter:image points to dedicated og-image.jpg', async ({ page }) => {
   await page.goto('/');
   const twitterImage = page.locator('meta[name="twitter:image"]');
   await expect(twitterImage).toHaveAttribute('content', /og-image\.jpg/);
+});
+
+// ── Marktplatz ──────────────────────────────────────────────
+
+test('marktplatz shows Bambi listing', async ({ page }) => {
+  await page.goto('/marktplatz');
+  await expect(page.locator('#bambi')).toBeVisible();
+});
+
+test('marktplatz Bambi status badge says available', async ({ page }) => {
+  await page.goto('/marktplatz');
+  await expect(page.locator('#bambi')).toContainText('Sucht ein Zuhause');
+});
+
+test('marktplatz inquiry CTA links to contact form', async ({ page }) => {
+  await page.goto('/marktplatz');
+  await expect(page.getByRole('link', { name: /Anfrage zu Bambi/ })).toHaveAttribute('href', '/#kontakt');
+});
+
+test('marktplatz hero image loads', async ({ page }) => {
+  await page.goto('/marktplatz');
+  const heroImage = page.getByAltText('Schafe auf der Weide am Futtertrog');
+  await expect(heroImage).toBeVisible();
+  await expect(heroImage).toHaveAttribute('src', /marktplatz-hero\.webp/);
 });
 
 // ── Performance basics ───────────────────────────────────────
