@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 
 // All routes that must load without errors
-const routes = ['/', '/datenschutz', '/impressum', '/bildnachweis', '/marktplatz'];
+const routes = ['/', '/datenschutz', '/impressum', '/bildnachweis', '/marktplatz', '/natur-im-garten'];
 
 // Anchor sections on the homepage
-const sections = ['ueber-uns', 'das-guteschaf', 'unsere-tiere', 'marktplatz', 'hofgeschichten', 'kontakt', 'faq'];
+const sections = ['ueber-uns', 'das-guteschaf', 'unsere-tiere', 'naturgarten', 'marktplatz', 'hofgeschichten', 'kontakt', 'faq'];
 
 // ── Page load ────────────────────────────────────────────────
 
@@ -47,6 +47,7 @@ test('header navigation links point to valid routes and anchors', async ({ page 
     'Über uns',
     'Das Guteschaf',
     'Unsere Tiere',
+    'Naturgarten',
     'Marktplatz',
     'Hofgeschichten',
     'Häufige Fragen',
@@ -181,6 +182,17 @@ test('homepage marketplace section is full and has no marketplace page link', as
   await expect(section.locator('a[href="/marktplatz/"]')).toHaveCount(0);
 });
 
+test('homepage nature garden section is image-led and full', async ({ page }) => {
+  await page.goto('/');
+  const section = page.locator('#naturgarten');
+  await expect(section).toContainText('Unser Garten');
+  await expect(section).toContainText('Sandarium');
+  await expect(section).toContainText('Gartenhexe');
+  await expect(section).toContainText('Käferburg');
+  await expect(section).toContainText('Kräuterspirale');
+  await expect(section.locator('img')).toHaveCount(5);
+});
+
 test('homepage marketplace anchor lands on marketplace section', async ({ page }) => {
   await page.goto('/#marktplatz');
   const teaser = page.locator('#marktplatz');
@@ -193,7 +205,11 @@ test('homepage marketplace anchor lands on marketplace section', async ({ page }
     .toBe(true);
 });
 
-test('mobile navigation click lands on marketplace section', async ({ page }) => {
+for (const { label, id } of [
+  { label: 'Naturgarten', id: 'naturgarten' },
+  { label: 'Marktplatz', id: 'marktplatz' },
+]) {
+test(`navigation click lands on ${id} section`, async ({ page }) => {
   await page.goto('/');
 
   const menuButton = page.getByRole('button', { name: 'Menü' });
@@ -201,9 +217,9 @@ test('mobile navigation click lands on marketplace section', async ({ page }) =>
     await menuButton.click();
   }
 
-  await page.getByRole('link', { name: 'Marktplatz' }).click();
+  await page.getByRole('link', { name: label }).click();
 
-  const section = page.locator('#marktplatz');
+  const section = page.locator(`#${id}`);
   await expect(section).toBeAttached();
   await expect
     .poll(async () => {
@@ -212,6 +228,7 @@ test('mobile navigation click lands on marketplace section', async ({ page }) =>
     })
     .toBe(true);
 });
+}
 
 test('marktplatz Bambi status badge says available', async ({ page }) => {
   await page.goto('/marktplatz');

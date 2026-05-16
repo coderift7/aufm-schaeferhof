@@ -55,13 +55,13 @@ export default function Header({ solid = false }: HeaderProps) {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-0 xl:flex">
           {siteConfig.nav.map((item) =>
             item.href === "/#kontakt" ? (
               <a
                 key={item.href}
                 href={href(item.href)}
-                className={`ml-2 rounded-full px-5 py-2 text-sm font-medium transition-all duration-300 ${
+                className={`ml-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
                   elevated
                     ? "bg-primary text-white hover:bg-primary/90"
                     : "bg-white/10 text-white backdrop-blur-sm hover:bg-white/20"
@@ -73,7 +73,7 @@ export default function Header({ solid = false }: HeaderProps) {
               <a
                 key={item.href}
                 href={href(item.href)}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+                className={`rounded-full px-3 py-2 text-sm font-medium transition-colors duration-300 ${
                   elevated
                     ? "text-muted-foreground hover:text-primary"
                     : "text-white/70 hover:text-white"
@@ -88,7 +88,7 @@ export default function Header({ solid = false }: HeaderProps) {
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className={`cursor-pointer rounded-full p-2 transition-colors lg:hidden ${
+          className={`cursor-pointer rounded-full p-2 transition-colors xl:hidden ${
             elevated ? "text-primary" : "text-white"
           }`}
           aria-label="Menü"
@@ -99,9 +99,9 @@ export default function Header({ solid = false }: HeaderProps) {
 
       {/* Mobile Menu — no Framer Motion, plain CSS for Android compatibility */}
       <div
-        className={`grid border-t border-border/50 bg-background/95 backdrop-blur-xl transition-all duration-300 ease-in-out sm:hidden ${
+        className={`grid border-t border-border/50 bg-background/95 backdrop-blur-xl transition-all duration-300 ease-in-out ${
           open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-        } lg:hidden`}
+        } xl:hidden`}
       >
         <div className="overflow-hidden">
           <nav className="flex flex-col gap-1 px-6 py-4">

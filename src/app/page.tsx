@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import History from "@/components/History";
 import Animals from "@/components/Animals";
+import NatureGarden from "@/components/NatureGarden";
 import Marketplace from "@/components/Marketplace";
 import Stories from "@/components/Stories";
 import FAQ from "@/components/FAQ";
@@ -18,6 +19,7 @@ export default function Home() {
         <About />
         <History />
         <Animals />
+        <NatureGarden />
         <Marketplace />
         <Stories />
         <FAQ />
