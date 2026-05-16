@@ -193,6 +193,26 @@ test('homepage marketplace anchor lands on marketplace section', async ({ page }
     .toBe(true);
 });
 
+test('mobile navigation click lands on marketplace section', async ({ page }) => {
+  await page.goto('/');
+
+  const menuButton = page.getByRole('button', { name: 'Menü' });
+  if (await menuButton.isVisible()) {
+    await menuButton.click();
+  }
+
+  await page.getByRole('link', { name: 'Marktplatz' }).click();
+
+  const section = page.locator('#marktplatz');
+  await expect(section).toBeAttached();
+  await expect
+    .poll(async () => {
+      const top = await section.evaluate((element) => element.getBoundingClientRect().top);
+      return top >= 60 && top <= 140;
+    })
+    .toBe(true);
+});
+
 test('marktplatz Bambi status badge says available', async ({ page }) => {
   await page.goto('/marktplatz');
   await expect(page.locator('#bambi')).toContainText('Sucht ein Zuhause');

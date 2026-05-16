@@ -4,28 +4,49 @@ import { useEffect } from "react";
 
 export default function HashScroller() {
   useEffect(() => {
+    const getHeaderOffset = () => {
+      const header = document.querySelector("header");
+      const headerBar = header?.firstElementChild;
+      return (headerBar?.getBoundingClientRect().height ?? 80) + 16;
+    };
+
     const scrollToCurrentHash = () => {
       const rawHash = window.location.hash.slice(1);
       if (!rawHash) return;
 
       const target = document.getElementById(decodeURIComponent(rawHash));
-      target?.scrollIntoView({ block: "start" });
+      if (!target) return;
+
+      const top =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        getHeaderOffset();
+
+      window.scrollTo({ top, behavior: "auto" });
     };
 
-    const frame = window.requestAnimationFrame(scrollToCurrentHash);
-    const timers = [
-      window.setTimeout(scrollToCurrentHash, 150),
-      window.setTimeout(scrollToCurrentHash, 700),
-    ];
+    const scheduleScroll = () => {
+      const timers = [0, 120, 300, 700, 1200, 2200].map((delay) =>
+        window.setTimeout(scrollToCurrentHash, delay)
+      );
 
-    window.addEventListener("hashchange", scrollToCurrentHash);
-    window.addEventListener("load", scrollToCurrentHash);
+      return () => timers.forEach((timer) => window.clearTimeout(timer));
+    };
+
+    let clearScheduledScroll = scheduleScroll();
+
+    const onHashChange = () => {
+      clearScheduledScroll();
+      clearScheduledScroll = scheduleScroll();
+    };
+
+    window.addEventListener("hashchange", onHashChange);
+    window.addEventListener("load", onHashChange);
 
     return () => {
-      window.cancelAnimationFrame(frame);
-      timers.forEach((timer) => window.clearTimeout(timer));
-      window.removeEventListener("hashchange", scrollToCurrentHash);
-      window.removeEventListener("load", scrollToCurrentHash);
+      clearScheduledScroll();
+      window.removeEventListener("hashchange", onHashChange);
+      window.removeEventListener("load", onHashChange);
     };
   }, []);
 
