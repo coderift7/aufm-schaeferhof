@@ -13,14 +13,6 @@ const stations = [
     className: "lg:col-span-7",
   },
   {
-    title: "Gartenhexe",
-    file: "gartenhexe.webp",
-    alt: "Gartenhexe aus Totholz und Reisig als Lebensraum für Kleintiere",
-    note: "Nützlingsunterkünfte für fleißige Helfer",
-    className: "lg:col-span-5 lg:row-span-2",
-    portrait: true,
-  },
-  {
     title: "Käferburg",
     file: "kaeferburg.webp",
     alt: "Käferburg aus Holzstämmen, Sand und Erde",
@@ -33,6 +25,14 @@ const stations = [
     alt: "Kräuterspirale aus Natursteinen im Garten",
     note: "Obst- und Gemüsegarten für die Selbstversorgung",
     className: "lg:col-span-3",
+  },
+  {
+    title: "Gartenhexe",
+    file: "gartenhexe.webp",
+    alt: "Gartenhexe aus Totholz und Reisig als Lebensraum für Kleintiere",
+    note: "Nützlingsunterkünfte für fleißige Helfer",
+    className: "lg:col-span-5 lg:row-span-2",
+    portrait: true,
   },
 ];
 
