@@ -17,22 +17,21 @@ const stations = [
     file: "kaeferburg.webp",
     alt: "Käferburg aus Holzstämmen, Sand und Erde",
     note: "Strauchhecken und Gehölze als Versteck und Nahrung für Vögel",
-    className: "lg:col-span-4",
+    className: "lg:col-span-5",
   },
   {
     title: "Kräuterspirale",
     file: "kraeuterspirale.webp",
     alt: "Kräuterspirale aus Natursteinen im Garten",
     note: "Obst- und Gemüsegarten für die Selbstversorgung",
-    className: "lg:col-span-3",
+    className: "lg:col-span-7",
   },
   {
     title: "Gartenhexe",
     file: "gartenhexe.webp",
     alt: "Gartenhexe aus Totholz und Reisig als Lebensraum für Kleintiere",
     note: "Nützlingsunterkünfte für fleißige Helfer",
-    className: "lg:col-span-5 lg:row-span-2",
-    portrait: true,
+    className: "lg:col-span-5",
   },
 ];
 
@@ -103,7 +102,7 @@ export default function NatureGarden() {
         </Reveal>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:gap-14">
-          <Reveal className="lg:sticky lg:top-24 lg:self-start">
+          <Reveal className="lg:self-start">
             <div className="border-l-4 border-warm bg-card px-6 py-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
               <Leaf className="h-8 w-8 text-warm" aria-hidden="true" />
               <h3 className="mt-5 font-heading text-2xl font-bold text-primary">
@@ -127,40 +126,34 @@ export default function NatureGarden() {
           <div className="grid gap-5 lg:grid-cols-12">
             {stations.map((station) => (
               <Reveal key={station.title} className={station.className}>
-                <article className="group relative min-h-full overflow-hidden border border-primary/20 bg-muted">
-                  <div
-                    className={`relative ${
-                      station.portrait
-                        ? "aspect-[4/5] min-h-[32rem]"
-                        : "aspect-[4/3] min-h-[18rem]"
-                    }`}
-                  >
+                <article className="min-h-full overflow-hidden border border-primary/20 bg-card shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+                  <div className="bg-[#f5efe6]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={img(`/fotos/natur-im-garten/${station.file}`)}
                       alt={station.alt}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      className="block h-auto w-full"
                       loading="lazy"
                     />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/85 via-primary/35 to-transparent p-5 text-white sm:p-6">
-                      <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-white/75">
-                        <Sprout className="h-4 w-4" aria-hidden="true" />
-                        Lebensraum
-                      </p>
-                      <h3 className="mt-2 font-heading text-2xl font-bold sm:text-3xl">
-                        {station.title}
-                      </h3>
-                      <p className="mt-2 max-w-md text-sm leading-6 text-white/85">
-                        {station.note}
-                      </p>
-                    </div>
+                  </div>
+                  <div className="p-5 sm:p-6">
+                    <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-warm">
+                      <Sprout className="h-4 w-4" aria-hidden="true" />
+                      Lebensraum
+                    </p>
+                    <h3 className="mt-2 font-heading text-2xl font-bold text-primary sm:text-3xl">
+                      {station.title}
+                    </h3>
+                    <p className="mt-2 max-w-md text-sm leading-6 text-muted-foreground">
+                      {station.note}
+                    </p>
                   </div>
                 </article>
               </Reveal>
             ))}
           </div>
 
-          <div className="mx-auto mt-14 max-w-3xl border-y border-primary/20 py-8 text-center">
+          <div className="mx-auto mt-14 max-w-3xl border-y border-primary/20 py-8 text-center lg:col-span-2">
             <p className="font-heading text-xl font-semibold leading-8 text-primary sm:text-2xl">
               Unser Garten ist mehr als nur ein Stück Land. Er ist ein Ort der
               Ruhe, der Inspiration und des Miteinanders.
