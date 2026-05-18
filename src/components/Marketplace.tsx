@@ -49,6 +49,27 @@ const statusLabel: Record<Listing["status"], string> = {
   vermittelt: "Vermittelt",
 };
 
+const communityAd = {
+  title: "Schafe zum Liebhaben",
+  eyebrow: "Mitmachende gesucht",
+  image: "schafe-zum-liebhaben.webp",
+  intro:
+    "Du träumst von einer kleinen Schafherde, aber dein Balkon ist leider zu klein? Dann haben wir genau das Richtige für dich!",
+  body: [
+    "Wir suchen herzliche Menschen, die sich für Schafhaltung begeistern, aber selbst keine Möglichkeit haben, Schafe zu halten — und gerne bei uns als Hobby mitmachen möchten.",
+    "Bei uns erwarten dich Gehörnte Gotlandschafe, die nicht nur flauschig sind, sondern auch so einiges an Arbeit und Freude mit sich bringen.",
+    "Ob du schon Erfahrung mitbringst oder einfach mal reinschnuppern möchtest — wir freuen uns über eine helfende Hand, die Lust hat, Zeit mit unseren Schafen zu verbringen.",
+  ],
+  tasks: [
+    "Weidepflege",
+    "Streicheleinheiten verteilen",
+    "beim Zaunbau anpacken",
+    "Geburten- und Lämmerbetreuung im Frühjahr",
+    "Klauenpflege",
+    "Wolle abnehmen",
+  ],
+};
+
 export default function Marketplace() {
   return (
     <section id="marktplatz" className="relative bg-card py-28 lg:py-36">
@@ -220,6 +241,70 @@ export default function Marketplace() {
               allem, dass Tier, Platz und Menschen gut zusammenpassen.
             </p>
           </div>
+        </Reveal>
+
+        <Reveal>
+          <article className="relative mt-16 overflow-hidden border border-primary/20 bg-primary text-white shadow-[8px_8px_0_rgba(166,124,82,0.18)] sm:mt-20">
+            <div className="relative aspect-[4/3] lg:hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={img(`/fotos/marktplatz/${communityAd.image}`)}
+                alt="Lamm auf einer Wiese mit gelben Blüten"
+                className="h-full w-full object-cover object-[58%_50%]"
+                loading="lazy"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/65 to-transparent" />
+            </div>
+
+            <div className="absolute inset-0 hidden lg:block">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={img(`/fotos/marktplatz/${communityAd.image}`)}
+                alt="Lamm auf einer Wiese mit gelben Blüten"
+                className="h-full w-full object-cover object-[34%_50%] sm:object-[32%_50%]"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/96 via-primary/70 to-primary/0" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/38 via-transparent to-transparent" />
+            </div>
+
+            <div className="relative grid items-end px-6 py-8 sm:px-8 sm:py-10 lg:min-h-[34rem] lg:grid-cols-[0.56fr_1.44fr] lg:px-10 lg:py-12">
+              <div className="max-w-[27rem]">
+                <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/72">
+                  {communityAd.eyebrow}
+                </p>
+                <h3 className="mt-4 font-heading text-4xl font-bold leading-tight sm:text-5xl">
+                  {communityAd.title}
+                </h3>
+                <p className="mt-5 text-lg font-semibold leading-8 text-white">
+                  {communityAd.intro}
+                </p>
+                <div className="mt-5 space-y-4 text-base leading-7 text-white/82">
+                  {communityAd.body.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+
+                <div className="mt-7 flex flex-wrap gap-2">
+                  {communityAd.tasks.map((task) => (
+                    <span
+                      key={task}
+                      className="border border-white/28 bg-white/10 px-3 py-2 text-sm font-semibold text-white backdrop-blur"
+                    >
+                      {task}
+                    </span>
+                  ))}
+                </div>
+
+                <a
+                  href="#kontakt"
+                  className="mt-8 inline-flex w-fit border-2 border-white bg-white px-5 py-3 text-sm font-bold uppercase tracking-[0.16em] text-primary transition hover:bg-transparent hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
+                >
+                  Kontakt aufnehmen
+                </a>
+              </div>
+            </div>
+          </article>
         </Reveal>
       </div>
     </section>
