@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 import { img } from "@/lib/utils";
 import { Reveal, motion } from "./Motion";
 import { AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 type Animal = { name: string; src: string; alt: string };
 type Slide = Animal & { status: "aktuell" | "ehemalig" };
@@ -26,6 +26,8 @@ export default function Animals() {
   const { animals } = siteConfig;
   const [catIndex, setCatIndex] = useState(0);
   const [[slideIndex, direction], setSlideIndex] = useState([0, 0]);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isInteracting, setIsInteracting] = useState(false);
 
   const category = animals.categories[catIndex];
   const { current: currentAnimals, former: formerAnimals } = category;
@@ -55,11 +57,29 @@ export default function Animals() {
     [slides.length]
   );
 
+  const showSlide = useCallback(
+    (i: number) => {
+      setSlideIndex([i, i > slideIndex ? 1 : -1]);
+    },
+    [slideIndex]
+  );
+
   // Reset slide when switching category
   const switchCategory = useCallback((i: number) => {
     setCatIndex(i);
     setSlideIndex([0, 0]);
   }, []);
+
+  // Auto-advance within the active category only.
+  useEffect(() => {
+    if (isPaused || isInteracting || slides.length <= 1) return;
+
+    const timer = window.setTimeout(() => {
+      paginate(1);
+    }, 5000);
+
+    return () => window.clearTimeout(timer);
+  }, [isPaused, isInteracting, paginate, slideIndex, slides.length]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -110,7 +130,17 @@ export default function Animals() {
             </div>
 
             {/* Image container */}
-            <div className="relative overflow-hidden rounded-2xl border border-border bg-muted shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+            <div
+              className="relative overflow-hidden rounded-2xl border border-border bg-muted shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
+              onMouseEnter={() => setIsInteracting(true)}
+              onMouseLeave={() => setIsInteracting(false)}
+              onFocusCapture={() => setIsInteracting(true)}
+              onBlurCapture={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                  setIsInteracting(false);
+                }
+              }}
+            >
               <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
                   key={`${catIndex}-${slideIndex}`}
@@ -146,6 +176,19 @@ export default function Animals() {
               >
                 <ChevronRight className="h-5 w-5 text-primary" />
               </button>
+
+              <button
+                onClick={() => setIsPaused((paused) => !paused)}
+                className="absolute right-3 bottom-3 rounded-full bg-white/85 p-2 shadow-md transition-colors hover:bg-white"
+                aria-label={isPaused ? "Diashow starten" : "Diashow pausieren"}
+                aria-pressed={isPaused}
+              >
+                {isPaused ? (
+                  <Play className="h-4 w-4 text-primary" />
+                ) : (
+                  <Pause className="h-4 w-4 text-primary" />
+                )}
+              </button>
             </div>
 
             {/* Name + Status */}
@@ -174,7 +217,7 @@ export default function Animals() {
               {slides.map((slide, i) => (
                 <button
                   key={slide.name}
-                  onClick={() => setSlideIndex([i, i > slideIndex ? 1 : -1])}
+                  onClick={() => showSlide(i)}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     i === slideIndex
                       ? "w-6 bg-warm"
